@@ -98,7 +98,19 @@ export default function Home() {
           boxSizing: "border-box",
         }}
       >
-        /vision-poster.png            backgroundColor: "#050b14",
+        <div
+          role="img"
+          aria-label="Vision Scenario Builder"
+          style={{
+            width: "100%",
+            aspectRatio: "1 / 1",
+            borderRadius: "28px",
+            border: "1px solid rgba(120,200,255,0.18)",
+            backgroundImage: 'url("/vision-poster.png")',
+            backgroundSize: "100% 100%",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundColor: "#050b14",
             boxShadow:
               "0 28px 90px rgba(0,0,0,0.42), 0 0 55px rgba(49,145,255,0.12)",
             boxSizing: "border-box",
@@ -122,7 +134,7 @@ export default function Home() {
               "linear-gradient(135deg, #0b1728 0%, #143255 100%)",
             borderRadius: "28px",
             border: "1px solid rgba(120,200,255,0.15)",
-            padding: "clamp(24px, 5vw, 40px)",
+            padding: "clamp(22px, 5vw, 40px)",
             boxShadow: "0 24px 70px rgba(0,0,0,0.25)",
             boxSizing: "border-box",
           }}
@@ -194,7 +206,7 @@ export default function Home() {
             >
               <summary
                 style={{
-                  minHeight: "142px",
+                  minHeight: "136px",
                   padding: "18px 14px",
                   boxSizing: "border-box",
                   cursor: "pointer",
@@ -202,7 +214,7 @@ export default function Home() {
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
-                  gap: "14px",
+                  gap: "12px",
                 }}
               >
                 <div>
@@ -210,7 +222,7 @@ export default function Home() {
                     style={{
                       color: "#69ff87",
                       fontWeight: "bold",
-                      fontSize: "clamp(16px, 4.5vw, 22px)",
+                      fontSize: "clamp(15px, 4.2vw, 22px)",
                       letterSpacing: "1px",
                       overflowWrap: "anywhere",
                     }}
@@ -269,7 +281,7 @@ export default function Home() {
             >
               <summary
                 style={{
-                  minHeight: "142px",
+                  minHeight: "136px",
                   padding: "18px 14px",
                   boxSizing: "border-box",
                   cursor: "pointer",
@@ -277,7 +289,7 @@ export default function Home() {
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
-                  gap: "14px",
+                  gap: "12px",
                 }}
               >
                 <div>
@@ -285,7 +297,7 @@ export default function Home() {
                     style={{
                       color: "#5ecbff",
                       fontWeight: "bold",
-                      fontSize: "clamp(16px, 4.5vw, 22px)",
+                      fontSize: "clamp(15px, 4.2vw, 22px)",
                       letterSpacing: "1px",
                       overflowWrap: "anywhere",
                     }}
