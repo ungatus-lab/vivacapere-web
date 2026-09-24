@@ -9,6 +9,8 @@ export default function Home() {
         fontFamily: "Arial, sans-serif",
       }}
     >
+      {/* HEADER */}
+
       <header
         style={{
           display: "flex",
@@ -75,6 +77,7 @@ export default function Home() {
               stroke="currentColor"
               strokeWidth="1.8"
             />
+
             <path
               d="M4.5 20C5.2 15.8 7.8 13.5 12 13.5C16.2 13.5 18.8 15.8 19.5 20"
               stroke="currentColor"
@@ -95,14 +98,16 @@ export default function Home() {
           boxSizing: "border-box",
         }}
       >
-        <img
-          src="/vision-poster.png"
-          alt="Vision Scenario Builder"
-          style={{
-            width: "100%",
-            display: "block",
-            borderRadius: "28px",
-            border       style={{
+        /vision-poster.png            boxShadow:
+              "0 28px 90px rgba(0,0,0,0.42), 0 0 55px rgba(49,145,255,0.12)",
+          }}
+        />
+      </section>
+
+      {/* CURRENT PRODUCT */}
+
+      <section
+        style={{
           maxWidth: "1200px",
           margin: "0 auto",
           padding: "0 24px 60px",
@@ -169,6 +174,8 @@ export default function Home() {
               marginTop: "32px",
             }}
           >
+            {/* TIMELINE */}
+
             <article
               style={{
                 background:
@@ -211,6 +218,8 @@ export default function Home() {
                 scenarios using timing and recorded idle intervals.
               </p>
             </article>
+
+            {/* VISION */}
 
             <article
               style={{
@@ -307,6 +316,8 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+      {/* FOOTER */}
 
       <footer
         style={{
