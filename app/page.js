@@ -9,8 +9,6 @@ export default function Home() {
         fontFamily: "Arial, sans-serif",
       }}
     >
-      {/* HEADER */}
-
       <header
         style={{
           display: "flex",
@@ -97,64 +95,14 @@ export default function Home() {
           boxSizing: "border-box",
         }}
       >
-        <div
+        <img
+          src="/vision-poster.png"
+          alt="Vision Scenario Builder"
           style={{
-            minHeight: "520px",
+            width: "100%",
+            display: "block",
             borderRadius: "28px",
-            border: "1px solid rgba(120,200,255,0.18)",
-            background:
-              "radial-gradient(circle at 50% 32%, rgba(44,143,255,0.2), transparent 35%), linear-gradient(145deg, #102d54 0%, #0a1a30 50%, #050b14 100%)",
-            boxShadow:
-              "0 28px 90px rgba(0,0,0,0.42), 0 0 55px rgba(49,145,255,0.12)",
-            display: "grid",
-            placeItems: "center",
-            overflow: "hidden",
-            boxSizing: "border-box",
-          }}
-        >
-          <div
-            style={{
-              padding: "40px 24px",
-              textAlign: "center",
-            }}
-          >
-            <div
-              style={{
-                color: "#7fd7ff",
-                fontSize: "12px",
-                letterSpacing: "5px",
-              }}
-            >
-              VISION SCENARIO BUILDER
-            </div>
-
-            <div
-              style={{
-                marginTop: "18px",
-                color: "#d9ecff",
-                fontSize: "18px",
-              }}
-            >
-              Product poster will appear here
-            </div>
-
-            <div
-              style={{
-                marginTop: "10px",
-                color: "#7891b3",
-                fontSize: "13px",
-              }}
-            >
-              vision-poster.png
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CURRENT PRODUCT */}
-
-      <section
-        style={{
+            border       style={{
           maxWidth: "1200px",
           margin: "0 auto",
           padding: "0 24px 60px",
@@ -221,8 +169,6 @@ export default function Home() {
               marginTop: "32px",
             }}
           >
-            {/* TIMELINE */}
-
             <article
               style={{
                 background:
@@ -265,8 +211,6 @@ export default function Home() {
                 scenarios using timing and recorded idle intervals.
               </p>
             </article>
-
-            {/* VISION */}
 
             <article
               style={{
@@ -363,8 +307,6 @@ export default function Home() {
           </p>
         </div>
       </section>
-
-      {/* FOOTER */}
 
       <footer
         style={{
