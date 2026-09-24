@@ -319,8 +319,6 @@ export default function Home() {
                     }}
                   >
                     Premium
-                    <br />
-                    EUR 4.99
                   </div>
                 </div>
 
