@@ -106,15 +106,13 @@ export default function Home() {
           style={{
             width: "100%",
             aspectRatio: "1 / 1",
-            borderTop: "1px solid rgba(120,200,255,0.18)",
-            borderBottom: "1px solid rgba(120,200,255,0.18)",
             backgroundImage: 'url("/vision-poster.png")',
             backgroundSize: "100% 100%",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             backgroundColor: "#050b14",
             boxShadow:
-              "0 28px 90px rgba(0,0,0,0.42), 0 0 55px rgba(49,145,255,0.12)",
+              "0 22px 70px rgba(0,0,0,0.34), 0 0 42px rgba(49,145,255,0.1)",
             boxSizing: "border-box",
           }}
         />
@@ -125,7 +123,7 @@ export default function Home() {
       <section
         style={{
           maxWidth: "1200px",
-          margin: "-64px auto 0",
+          margin: "-28px auto 0",
           padding: "0 16px 60px",
           boxSizing: "border-box",
           position: "relative",
@@ -135,12 +133,12 @@ export default function Home() {
         <div
           style={{
             background:
-              "linear-gradient(135deg, rgba(11,23,40,0.98) 0%, rgba(20,50,85,0.98) 100%)",
+              "linear-gradient(180deg, rgba(5,11,20,0.99) 0%, rgba(10,24,43,0.99) 18%, rgba(20,50,85,0.98) 100%)",
             borderRadius: "28px",
-            border: "1px solid rgba(120,200,255,0.22)",
+            border: "none",
             padding: "clamp(22px, 5vw, 40px)",
             boxShadow:
-              "0 28px 80px rgba(0,0,0,0.46), 0 0 35px rgba(49,145,255,0.08)",
+              "0 24px 72px rgba(0,0,0,0.44), 0 0 30px rgba(49,145,255,0.06)",
             boxSizing: "border-box",
             backdropFilter: "blur(18px)",
           }}
