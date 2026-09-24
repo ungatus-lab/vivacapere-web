@@ -9,12 +9,17 @@ export default function Home() {
         fontFamily: "Arial, sans-serif",
       }}
     >
+      {/* HEADER */}
+
       <header
         style={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: "24px 40px",
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "24px",
+          boxSizing: "border-box",
         }}
       >
         <div>
@@ -30,6 +35,7 @@ export default function Home() {
 
           <div
             style={{
+              marginTop: "4px",
               fontSize: "12px",
               color: "#7088a8",
             }}
@@ -38,49 +44,132 @@ export default function Home() {
           </div>
         </div>
 
-        <div
+        <button
+          type="button"
+          aria-label="Open Vivacapere account"
+          title="Vivacapere Account"
           style={{
             width: "44px",
             height: "44px",
+            padding: 0,
             borderRadius: "50%",
             border: "1px solid #4aa8ff",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            background:
+              "radial-gradient(circle at 30% 20%, rgba(74,168,255,0.25), transparent 38%), rgba(8,17,29,0.8)",
             color: "#7fd7ff",
-            fontSize: "20px",
-            boxShadow: "0 0 15px rgba(74,168,255,.35)",
+            boxShadow: "0 0 18px rgba(74,168,255,0.35)",
+            display: "grid",
+            placeItems: "center",
             cursor: "pointer",
           }}
         >
-          👤
-        </div>
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <circle
+              cx="12"
+              cy="8"
+              r="4"
+              stroke="currentColor"
+              strokeWidth="1.8"
+            />
+            <path
+              d="M4.5 20C5.2 15.8 7.8 13.5 12 13.5C16.2 13.5 18.8 15.8 19.5 20"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+            />
+          </svg>
+        </button>
       </header>
+
+      {/* POSTER HERO */}
 
       <section
         style={{
           maxWidth: "1200px",
           margin: "0 auto",
-          padding: "10px 24px 60px",
+          padding: "16px 24px 60px",
+          boxSizing: "border-box",
         }}
       >
-        <img
-          src="/vision-poster.png"
-          alt="Vision Scenario Builder"
+        <div
           style={{
-            width: "100%",
-            borderRadius: "24px",
-            display: "block",
-            border: "1px solid rgba(120,200,255,.15)",
+            minHeight: "520px",
+            borderRadius: "28px",
+            border: "1px solid rgba(120,200,255,0.18)",
+            background:
+              "radial-gradient(circle at 50% 32%, rgba(44,143,255,0.2), transparent 35%), linear-gradient(145deg, #102d54 0%, #0a1a30 50%, #050b14 100%)",
+            boxShadow:
+              "0 28px 90px rgba(0,0,0,0.42), 0 0 55px rgba(49,145,255,0.12)",
+            display: "grid",
+            placeItems: "center",
+            overflow: "hidden",
+            boxSizing: "border-box",
           }}
-        />
+        >
+          <div
+            style={{
+              padding: "40px 24px",
+              textAlign: "center",
+            }}
+          >
+            <div
+              style={{
+                color: "#7fd7ff",
+                fontSize: "12px",
+                letterSpacing: "5px",
+              }}
+            >
+              VISION SCENARIO BUILDER
+            </div>
+
+            <div
+              style={{
+                marginTop: "18px",
+                color: "#d9ecff",
+                fontSize: "18px",
+              }}
+            >
+              Product poster will appear here
+            </div>
+
+            <div
+              style={{
+                marginTop: "10px",
+                color: "#7891b3",
+                fontSize: "13px",
+              }}
+            >
+              vision-poster.png
+            </div>
+          </div>
+        </div>
       </section>
+
+      {/* CURRENT PRODUCT */}
 
       <section
         style={{
           maxWidth: "1200px",
-             border: "1px solid rgba(120,200,255,.15)",
+          margin: "0 auto",
+          padding: "0 24px 60px",
+          boxSizing: "border-box",
+        }}
+      >
+        <div
+          style={{
+            background:
+              "linear-gradient(135deg, #0b1728 0%, #143255 100%)",
+            borderRadius: "28px",
+            border: "1px solid rgba(120,200,255,0.15)",
             padding: "40px",
+            boxShadow: "0 24px 70px rgba(0,0,0,0.25)",
+            boxSizing: "border-box",
           }}
         >
           <div
@@ -93,112 +182,207 @@ export default function Home() {
             CURRENT PRODUCT
           </div>
 
-          <h2
+          <h1
             style={{
-              marginTop: "16px",
+              margin: "16px 0 0",
+              fontSize: "clamp(30px, 5vw, 48px)",
+              lineHeight: 1.1,
             }}
           >
             Vivacapere AutoClicker
+          </h1>
+
+          <h2
+            style={{
+              margin: "10px 0 0",
+              color: "#80d5ff",
+              fontSize: "clamp(20px, 3vw, 30px)",
+              fontWeight: 400,
+            }}
+          >
+            Vision Scenario Builder
           </h2>
 
           <p
             style={{
+              margin: "18px 0 0",
               color: "#9ec2e8",
             }}
           >
-            Google Play Release
+            Preparing for Google Play release
           </p>
 
           <div
             style={{
               display: "grid",
               gridTemplateColumns:
-                "repeat(auto-fit,minmax(280px,1fr))",
+                "repeat(auto-fit, minmax(260px, 1fr))",
               gap: "20px",
-              marginTop: "30px",
+              marginTop: "32px",
             }}
           >
-            <div
+            {/* TIMELINE */}
+
+            <article
               style={{
-                background: "rgba(255,255,255,.04)",
-                borderRadius: "18px",
-                padding: "24px",
+                background:
+                  "radial-gradient(circle at 15% 0%, rgba(92,255,132,0.12), transparent 40%), rgba(255,255,255,0.04)",
+                border: "1px solid rgba(105,255,135,0.18)",
+                borderRadius: "20px",
+                padding: "26px",
+                boxSizing: "border-box",
               }}
             >
               <div
                 style={{
                   color: "#69ff87",
                   fontWeight: "bold",
-                  fontSize: "20px",
+                  fontSize: "22px",
+                  letterSpacing: "2px",
                 }}
               >
                 TIMELINE
               </div>
 
-              <p>Free</p>
+              <div
+                style={{
+                  marginTop: "12px",
+                  color: "#ffffff",
+                  fontWeight: "bold",
+                }}
+              >
+                Free
+              </div>
 
-              <p>
-                Record gestures.
-                Replay actions.
-                Build scenarios.
+              <p
+                style={{
+                  margin: "18px 0 0",
+                  color: "#aebfd7",
+                  lineHeight: 1.7,
+                }}
+              >
+                Record gestures. Replay actions. Build complete automation
+                scenarios using timing and recorded idle intervals.
               </p>
-            </div>
+            </article>
 
-            <div
+            {/* VISION */}
+
+            <article
               style={{
-                background: "rgba(255,255,255,.04)",
-                borderRadius: "18px",
-                padding: "24px",
+                background:
+                  "radial-gradient(circle at 15% 0%, rgba(74,188,255,0.16), transparent 40%), rgba(255,255,255,0.04)",
+                border: "1px solid rgba(94,203,255,0.22)",
+                borderRadius: "20px",
+                padding: "26px",
+                boxSizing: "border-box",
               }}
             >
               <div
                 style={{
                   color: "#5ecbff",
                   fontWeight: "bold",
-                  fontSize: "20px",
+                  fontSize: "22px",
+                  letterSpacing: "2px",
                 }}
               >
                 VISION
               </div>
 
-              <p>Premium €4.99</p>
+              <div
+                style={{
+                  marginTop: "12px",
+                  color: "#ffffff",
+                  fontWeight: "bold",
+                }}
+              >
+                Premium EUR 4.99
+              </div>
 
-              <p>
-                Visual recognition.
-                TransScan engine.
-                Adaptive automation.
+              <p
+                style={{
+                  margin: "18px 0 0",
+                  color: "#aebfd7",
+                  lineHeight: 1.7,
+                }}
+              >
+                Capture visual states with TransScan, create scene etalons and
+                execute gestures when the expected screen state is detected.
               </p>
-            </div>
+            </article>
           </div>
         </div>
       </section>
+
+      {/* COMING NEXT */}
 
       <section
         style={{
           maxWidth: "1200px",
           margin: "0 auto",
           padding: "0 24px 80px",
+          boxSizing: "border-box",
         }}
       >
-        <h2>Coming Next</h2>
+        <div
+          style={{
+            borderLeft: "2px solid #389cff",
+            padding: "4px 0 4px 24px",
+          }}
+        >
+          <div
+            style={{
+              color: "#7fd7ff",
+              fontSize: "12px",
+              letterSpacing: "4px",
+            }}
+          >
+            COMING NEXT
+          </div>
 
-        <p>Device Room</p>
-        <p>Multi Device Orchestration</p>
-        <p>AI Assistant</p>
+          <h2
+            style={{
+              margin: "14px 0 0",
+            }}
+          >
+            Platform Expansion
+          </h2>
+
+          <p
+            style={{
+              marginTop: "20px",
+              color: "#9db0ce",
+              lineHeight: 1.9,
+            }}
+          >
+            Device Room
+            <br />
+            Multi-Device Orchestration
+            <br />
+            AI Assistant
+          </p>
+        </div>
       </section>
+
+      {/* FOOTER */}
 
       <footer
         style={{
-          borderTop: "1px solid rgba(255,255,255,.08)",
-          padding: "40px",
+          borderTop: "1px solid rgba(255,255,255,0.08)",
+          padding: "40px 24px",
           textAlign: "center",
           color: "#7c90b0",
         }}
       >
         <div>VIVACAPERE OÜ</div>
 
-        <div style={{ marginTop: "10px" }}>
-          Privacy Policy • Terms • Contact
+        <div
+          style={{
+            marginTop: "10px",
+            fontSize: "13px",
+          }}
+        >
+          Privacy Policy · Terms · Contact
         </div>
       </footer>
     </main>
