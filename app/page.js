@@ -98,8 +98,23 @@ export default function Home() {
           boxSizing: "border-box",
         }}
       >
-        /vision-poster.png            boxShadow:
+        <div
+          role="img"
+          aria-label="Vision Scenario Builder"
+          style={{
+            width: "100%",
+            aspectRatio: "16 / 9",
+            borderRadius: "28px",
+            border: "1px solid rgba(120,200,255,0.18)",
+            backgroundImage: 'url("/vision-poster.png")',
+            backgroundSize: "contain",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundColor: "#050b14",
+            boxShadow:
               "0 28px 90px rgba(0,0,0,0.42), 0 0 55px rgba(49,145,255,0.12)",
+            overflow: "hidden",
+            boxSizing: "border-box",
           }}
         />
       </section>
