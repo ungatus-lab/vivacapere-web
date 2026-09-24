@@ -98,9 +98,9 @@ export default function Home() {
           boxSizing: "border-box",
         }}
       >
-        /vision-poster.png            backgroundColor: "#050b14",
-            boxShadow:
+        /vision-poster.png            boxShadow:
               "0 28px 90px rgba(0,0,0,0.42), 0 0 55px rgba(49,145,255,0.12)",
+            boxSizing: "border-box",
           }}
         />
       </section>
@@ -193,8 +193,8 @@ export default function Home() {
             >
               <summary
                 style={{
-                  minHeight: "150px",
-                  padding: "20px 16px",
+                  minHeight: "142px",
+                  padding: "18px 14px",
                   boxSizing: "border-box",
                   cursor: "pointer",
                   listStyle: "none",
@@ -209,7 +209,7 @@ export default function Home() {
                     style={{
                       color: "#69ff87",
                       fontWeight: "bold",
-                      fontSize: "clamp(17px, 5vw, 22px)",
+                      fontSize: "clamp(16px, 4.5vw, 22px)",
                       letterSpacing: "1px",
                       overflowWrap: "anywhere",
                     }}
@@ -232,7 +232,7 @@ export default function Home() {
                 <div
                   style={{
                     color: "#8fcfa0",
-                    fontSize: "12px",
+                    fontSize: "11px",
                     lineHeight: 1.4,
                   }}
                 >
@@ -242,14 +242,14 @@ export default function Home() {
 
               <div
                 style={{
-                  padding: "0 16px 20px",
+                  padding: "0 14px 18px",
                   color: "#aebfd7",
                   fontSize: "13px",
                   lineHeight: 1.55,
                 }}
               >
-                Record gestures and replay complete scenarios using captured
-                timing and idle intervals.
+                Record gestures and replay scenarios using captured timing and
+                idle intervals.
               </div>
             </details>
 
@@ -268,8 +268,8 @@ export default function Home() {
             >
               <summary
                 style={{
-                  minHeight: "150px",
-                  padding: "20px 16px",
+                  minHeight: "142px",
+                  padding: "18px 14px",
                   boxSizing: "border-box",
                   cursor: "pointer",
                   listStyle: "none",
@@ -284,7 +284,7 @@ export default function Home() {
                     style={{
                       color: "#5ecbff",
                       fontWeight: "bold",
-                      fontSize: "clamp(17px, 5vw, 22px)",
+                      fontSize: "clamp(16px, 4.5vw, 22px)",
                       letterSpacing: "1px",
                       overflowWrap: "anywhere",
                     }}
@@ -310,7 +310,7 @@ export default function Home() {
                 <div
                   style={{
                     color: "#86cceb",
-                    fontSize: "12px",
+                    fontSize: "11px",
                     lineHeight: 1.4,
                   }}
                 >
@@ -320,14 +320,14 @@ export default function Home() {
 
               <div
                 style={{
-                  padding: "0 16px 20px",
+                  padding: "0 14px 18px",
                   color: "#aebfd7",
                   fontSize: "13px",
                   lineHeight: 1.55,
                 }}
               >
-                Detect visual screen states with TransScan and execute gestures
-                when the expected scene appears.
+                Detect screen states with TransScan and execute gestures when
+                the expected scene appears.
               </div>
             </details>
           </div>
