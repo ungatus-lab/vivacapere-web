@@ -94,27 +94,13 @@ export default function Home() {
         style={{
           maxWidth: "1200px",
           margin: "0 auto",
-          padding: "16px 24px 60px",
+          padding: "16px 24px 48px",
           boxSizing: "border-box",
         }}
       >
-        <div
-          role="img"
-          aria-label="Vision Scenario Builder"
-          style={{
-            width: "100%",
-            aspectRatio: "16 / 9",
-            borderRadius: "28px",
-            border: "1px solid rgba(120,200,255,0.18)",
-            backgroundImage: 'url("/vision-poster.png")',
-            backgroundSize: "contain",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            backgroundColor: "#050b14",
+        /vision-poster.png            backgroundColor: "#050b14",
             boxShadow:
               "0 28px 90px rgba(0,0,0,0.42), 0 0 55px rgba(49,145,255,0.12)",
-            overflow: "hidden",
-            boxSizing: "border-box",
           }}
         />
       </section>
@@ -135,7 +121,7 @@ export default function Home() {
               "linear-gradient(135deg, #0b1728 0%, #143255 100%)",
             borderRadius: "28px",
             border: "1px solid rgba(120,200,255,0.15)",
-            padding: "40px",
+            padding: "clamp(24px, 5vw, 40px)",
             boxShadow: "0 24px 70px rgba(0,0,0,0.25)",
             boxSizing: "border-box",
           }}
@@ -153,8 +139,8 @@ export default function Home() {
           <h1
             style={{
               margin: "16px 0 0",
-              fontSize: "clamp(30px, 5vw, 48px)",
-              lineHeight: 1.1,
+              fontSize: "clamp(30px, 7vw, 48px)",
+              lineHeight: 1.08,
             }}
           >
             Vivacapere AutoClicker
@@ -164,7 +150,7 @@ export default function Home() {
             style={{
               margin: "10px 0 0",
               color: "#80d5ff",
-              fontSize: "clamp(20px, 3vw, 30px)",
+              fontSize: "clamp(20px, 5vw, 30px)",
               fontWeight: 400,
             }}
           >
@@ -175,109 +161,175 @@ export default function Home() {
             style={{
               margin: "18px 0 0",
               color: "#9ec2e8",
+              fontSize: "clamp(14px, 3.8vw, 17px)",
             }}
           >
             Preparing for Google Play release
           </p>
 
+          {/* MODE CARDS */}
+
           <div
             style={{
               display: "grid",
-              gridTemplateColumns:
-                "repeat(auto-fit, minmax(260px, 1fr))",
-              gap: "20px",
-              marginTop: "32px",
+              gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+              gap: "12px",
+              marginTop: "30px",
+              alignItems: "start",
             }}
           >
             {/* TIMELINE */}
 
-            <article
+            <details
               style={{
+                minWidth: 0,
                 background:
-                  "radial-gradient(circle at 15% 0%, rgba(92,255,132,0.12), transparent 40%), rgba(255,255,255,0.04)",
-                border: "1px solid rgba(105,255,135,0.18)",
+                  "radial-gradient(circle at 20% 0%, rgba(92,255,132,0.15), transparent 45%), rgba(255,255,255,0.04)",
+                border: "1px solid rgba(105,255,135,0.22)",
                 borderRadius: "20px",
-                padding: "26px",
                 boxSizing: "border-box",
+                overflow: "hidden",
               }}
             >
-              <div
+              <summary
                 style={{
-                  color: "#69ff87",
-                  fontWeight: "bold",
-                  fontSize: "22px",
-                  letterSpacing: "2px",
+                  minHeight: "150px",
+                  padding: "20px 16px",
+                  boxSizing: "border-box",
+                  cursor: "pointer",
+                  listStyle: "none",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  gap: "14px",
                 }}
               >
-                TIMELINE
-              </div>
+                <div>
+                  <div
+                    style={{
+                      color: "#69ff87",
+                      fontWeight: "bold",
+                      fontSize: "clamp(17px, 5vw, 22px)",
+                      letterSpacing: "1px",
+                      overflowWrap: "anywhere",
+                    }}
+                  >
+                    TIMELINE
+                  </div>
+
+                  <div
+                    style={{
+                      marginTop: "10px",
+                      color: "#ffffff",
+                      fontWeight: "bold",
+                      fontSize: "14px",
+                    }}
+                  >
+                    Free
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    color: "#8fcfa0",
+                    fontSize: "12px",
+                    lineHeight: 1.4,
+                  }}
+                >
+                  Tap for details
+                </div>
+              </summary>
 
               <div
                 style={{
-                  marginTop: "12px",
-                  color: "#ffffff",
-                  fontWeight: "bold",
-                }}
-              >
-                Free
-              </div>
-
-              <p
-                style={{
-                  margin: "18px 0 0",
+                  padding: "0 16px 20px",
                   color: "#aebfd7",
-                  lineHeight: 1.7,
+                  fontSize: "13px",
+                  lineHeight: 1.55,
                 }}
               >
-                Record gestures. Replay actions. Build complete automation
-                scenarios using timing and recorded idle intervals.
-              </p>
-            </article>
+                Record gestures and replay complete scenarios using captured
+                timing and idle intervals.
+              </div>
+            </details>
 
             {/* VISION */}
 
-            <article
+            <details
               style={{
+                minWidth: 0,
                 background:
-                  "radial-gradient(circle at 15% 0%, rgba(74,188,255,0.16), transparent 40%), rgba(255,255,255,0.04)",
-                border: "1px solid rgba(94,203,255,0.22)",
+                  "radial-gradient(circle at 20% 0%, rgba(74,188,255,0.2), transparent 45%), rgba(255,255,255,0.04)",
+                border: "1px solid rgba(94,203,255,0.26)",
                 borderRadius: "20px",
-                padding: "26px",
                 boxSizing: "border-box",
+                overflow: "hidden",
               }}
             >
-              <div
+              <summary
                 style={{
-                  color: "#5ecbff",
-                  fontWeight: "bold",
-                  fontSize: "22px",
-                  letterSpacing: "2px",
+                  minHeight: "150px",
+                  padding: "20px 16px",
+                  boxSizing: "border-box",
+                  cursor: "pointer",
+                  listStyle: "none",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  gap: "14px",
                 }}
               >
-                VISION
-              </div>
+                <div>
+                  <div
+                    style={{
+                      color: "#5ecbff",
+                      fontWeight: "bold",
+                      fontSize: "clamp(17px, 5vw, 22px)",
+                      letterSpacing: "1px",
+                      overflowWrap: "anywhere",
+                    }}
+                  >
+                    VISION
+                  </div>
+
+                  <div
+                    style={{
+                      marginTop: "10px",
+                      color: "#ffffff",
+                      fontWeight: "bold",
+                      fontSize: "14px",
+                      lineHeight: 1.35,
+                    }}
+                  >
+                    Premium
+                    <br />
+                    EUR 4.99
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    color: "#86cceb",
+                    fontSize: "12px",
+                    lineHeight: 1.4,
+                  }}
+                >
+                  Tap for details
+                </div>
+              </summary>
 
               <div
                 style={{
-                  marginTop: "12px",
-                  color: "#ffffff",
-                  fontWeight: "bold",
-                }}
-              >
-                Premium EUR 4.99
-              </div>
-
-              <p
-                style={{
-                  margin: "18px 0 0",
+                  padding: "0 16px 20px",
                   color: "#aebfd7",
-                  lineHeight: 1.7,
+                  fontSize: "13px",
+                  lineHeight: 1.55,
                 }}
               >
-                Capture visual states with TransScan, create scene etalons and
-                execute gestures when the expected screen state is detected.
-              </p>
-            </article>
+                Detect visual screen states with TransScan and execute gestures
+                when the expected scene appears.
+              </div>
+            </details>
           </div>
         </div>
       </section>
@@ -311,6 +363,7 @@ export default function Home() {
           <h2
             style={{
               margin: "14px 0 0",
+              fontSize: "clamp(26px, 7vw, 38px)",
             }}
           >
             Platform Expansion
