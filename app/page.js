@@ -96,8 +96,6 @@ export default function Home() {
           margin: 0,
           padding: 0,
           boxSizing: "border-box",
-          position: "relative",
-          zIndex: 1,
         }}
       >
         <div
@@ -112,7 +110,7 @@ export default function Home() {
             backgroundRepeat: "no-repeat",
             backgroundColor: "#050b14",
             boxShadow:
-              "0 22px 70px rgba(0,0,0,0.34), 0 0 42px rgba(49,145,255,0.1)",
+              "0 18px 54px rgba(0,0,0,0.28), 0 0 34px rgba(49,145,255,0.08)",
             boxSizing: "border-box",
           }}
         />
@@ -123,24 +121,21 @@ export default function Home() {
       <section
         style={{
           maxWidth: "1200px",
-          margin: "-28px auto 0",
+          margin: "0 auto",
           padding: "0 16px 60px",
           boxSizing: "border-box",
-          position: "relative",
-          zIndex: 2,
         }}
       >
         <div
           style={{
             background:
-              "linear-gradient(180deg, rgba(5,11,20,0.99) 0%, rgba(10,24,43,0.99) 18%, rgba(20,50,85,0.98) 100%)",
+              "linear-gradient(180deg, #050b14 0%, #0a182b 18%, #143255 100%)",
             borderRadius: "28px",
             border: "none",
             padding: "clamp(22px, 5vw, 40px)",
             boxShadow:
-              "0 24px 72px rgba(0,0,0,0.44), 0 0 30px rgba(49,145,255,0.06)",
+              "0 24px 72px rgba(0,0,0,0.4), 0 0 28px rgba(49,145,255,0.05)",
             boxSizing: "border-box",
-            backdropFilter: "blur(18px)",
           }}
         >
           <div
@@ -265,8 +260,7 @@ export default function Home() {
                   lineHeight: 1.55,
                 }}
               >
-                Record gestures and replay scenarios using captured timing and
-                idle intervals.
+                Record and replay complete automation scenarios.
               </div>
             </details>
 
@@ -341,8 +335,7 @@ export default function Home() {
                   lineHeight: 1.55,
                 }}
               >
-                Detect screen states with TransScan and execute gestures when
-                the expected scene appears.
+                Recognize screen states and act at the right moment.
               </div>
             </details>
           </div>
