@@ -1,3 +1,8 @@
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 const builtItems = [
   ["Gesture Recorder", "Built and tested"],
   ["Timeline Player", "Built and tested"],
@@ -67,9 +72,10 @@ const progressStages = [
 ];
 
 const sectionStyle = {
+  width: "100%",
   maxWidth: "1200px",
   margin: "0 auto",
-  padding: "88px 20px",
+  padding: "72px 20px",
   boxSizing: "border-box",
 };
 
@@ -121,13 +127,17 @@ export default function Home() {
     <main className="page">
       <style>{`
         * { box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { margin: 0; background: #02060d; }
+        html { scroll-behavior: smooth; width: 100%; max-width: 100%; overflow-x: hidden; }
+        body { margin: 0; width: 100%; max-width: 100%; overflow-x: hidden; background: #02060d; }
+        img, svg { max-width: 100%; }
+        main, header, section, div, article, nav { min-width: 0; }
         button, a { font: inherit; }
         a { color: inherit; text-decoration: none; }
         .page {
+          width: 100%;
+          max-width: 100vw;
           min-height: 100vh;
-          overflow: hidden;
+          overflow-x: hidden;
           color: #fff;
           font-family: Arial, Helvetica, sans-serif;
           background:
@@ -209,6 +219,7 @@ export default function Home() {
         .primary { background: linear-gradient(135deg, #1d8dff, #6d36ff); box-shadow: 0 12px 30px rgba(37,126,255,.28); }
         .secondary { background: rgba(255,255,255,.045); color: #bceaff; }
         .posterWrap { width: 100%; padding: 0 14px 68px; }
+        .contentSection { width: 100%; }
         .sectionTitle { margin: 14px 0 0; font-size: clamp(30px, 5vw, 50px); line-height: 1.08; }
         .sectionLead { margin: 18px 0 0; color: #9eb4ce; font-size: 17px; line-height: 1.75; }
         .modeGrid, .builtGrid, .integrationGrid, .fundGrid, .roadmapGrid {
@@ -252,11 +263,87 @@ export default function Home() {
         .roadmapCard p { margin: 12px 0 0; color: #91a8c2; line-height: 1.6; font-size: 14px; }
         .footer { border-top: 1px solid rgba(255,255,255,.08); padding: 42px 20px; text-align: center; color: #7187a3; }
         @media (max-width: 820px) {
+          .headerInner {
+            width: 100%;
+            padding: 12px 16px;
+          }
+          .brand { font-size: 15px; letter-spacing: 2.2px; }
+          .brandSub { font-size: 8px; letter-spacing: .7px; }
+          .profile { width: 38px; height: 38px; flex: 0 0 38px; }
           .nav { display: none; }
-          .hero { padding-top: 68px; }
-          .hero h1 { letter-spacing: -1.6px; }
-          .modeGrid, .builtGrid, .integrationGrid, .fundGrid, .roadmapGrid, .evolution { grid-template-columns: 1fr; }
-          .posterWrap { padding-left: 8px; padding-right: 8px; }
+          .hero {
+            width: 100%;
+            padding: 48px 18px 30px;
+          }
+          .eyebrow {
+            font-size: 10px;
+            letter-spacing: 2.2px;
+            overflow-wrap: anywhere;
+          }
+          .hero h1 {
+            font-size: clamp(42px, 13vw, 58px);
+            line-height: .94;
+            letter-spacing: -1.8px;
+            overflow-wrap: anywhere;
+          }
+          .hero h2 {
+            font-size: clamp(21px, 6.3vw, 29px);
+            line-height: 1.18;
+          }
+          .heroLead {
+            max-width: 100%;
+            font-size: 17px;
+            line-height: 1.58;
+          }
+          .status {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            text-align: center;
+            line-height: 1.4;
+          }
+          .actions {
+            width: 100%;
+            margin-top: 22px;
+            gap: 10px;
+          }
+          .button {
+            width: 100%;
+            min-height: 50px;
+            padding: 12px 16px;
+            text-align: center;
+          }
+          .posterWrap {
+            padding: 0 10px 26px;
+          }
+          .posterWrap > div,
+          .evolution > div,
+          section > div {
+            max-width: 100%;
+          }
+          .contentSection {
+            padding-left: 18px !important;
+            padding-right: 18px !important;
+            padding-top: 46px !important;
+            padding-bottom: 46px !important;
+          }
+          .contentSection + .contentSection { padding-top: 34px !important; }
+          .sectionTitle {
+            font-size: clamp(32px, 10vw, 44px);
+            overflow-wrap: anywhere;
+          }
+          .sectionLead {
+            font-size: 16px;
+            line-height: 1.6;
+            overflow-wrap: anywhere;
+          }
+          .modeGrid, .builtGrid, .integrationGrid, .fundGrid, .roadmapGrid, .evolution {
+            grid-template-columns: minmax(0, 1fr);
+          }
+          .modeCard { min-height: 0; padding: 24px 20px; }
+          .fundCard, .progressCard, .accelerationPanel { padding: 22px 18px; }
+          .progressHead, .accelerationTop { align-items: flex-start; }
+          .progressStatus { overflow-wrap: anywhere; }
         }
       `}</style>
 
@@ -309,7 +396,7 @@ export default function Home() {
         <Poster src="/new_poster_centralbutton.jpg" alt="Vivacapere central Widget architecture with single-device and multi-device automation" />
       </div>
 
-      <section id="product" style={sectionStyle}>
+      <section id="product" className="contentSection" style={sectionStyle}>
         <SectionTitle
           eyebrow="TWO AUTOMATION MODES"
           title="Automation that can see before it acts."
@@ -341,7 +428,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section style={{ ...sectionStyle, paddingTop: "34px", paddingBottom: "34px" }}>
+      <section className="contentSection" style={{ ...sectionStyle, paddingTop: "34px", paddingBottom: "34px" }}>
         <div style={{ ...panelStyle, padding: "clamp(28px, 6vw, 64px)", textAlign: "center", borderColor: "rgba(91,215,255,.32)" }}>
           <div className="eyebrow">FROM BLIND REPLAY TO VISUAL ACTION</div>
           <h2 className="sectionTitle" style={{ maxWidth: "900px", marginLeft: "auto", marginRight: "auto" }}>
@@ -355,7 +442,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section id="proof" style={{ ...sectionStyle, paddingTop: "42px" }}>
+      <section id="proof" className="contentSection" style={{ ...sectionStyle, paddingTop: "42px" }}>
         <SectionTitle
           eyebrow="BUILT AND WORKING"
           title="A year of development is already inside the product."
@@ -373,7 +460,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="technology" style={sectionStyle}>
+      <section id="technology" className="contentSection" style={sectionStyle}>
         <div className="evolution">
           <div>
             <div className="eyebrow">INTERFACE EVOLUTION</div>
@@ -386,7 +473,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section style={{ ...sectionStyle, paddingTop: "40px" }}>
+      <section className="contentSection" style={{ ...sectionStyle, paddingTop: "40px" }}>
         <SectionTitle
           eyebrow="FINAL INTEGRATION BEFORE TESTING"
           title="The invention is built. The release experience is being completed."
@@ -402,7 +489,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section style={sectionStyle}>
+      <section className="contentSection" style={sectionStyle}>
         <SectionTitle
           eyebrow="PRODUCT VISION"
           title="Vision Scenario Builder"
@@ -411,7 +498,7 @@ export default function Home() {
         <Poster src="/vision-poster.png" alt="Vision Scenario Builder product vision poster" portrait />
       </section>
 
-      <section style={{ ...sectionStyle, paddingTop: "34px" }}>
+      <section className="contentSection" style={{ ...sectionStyle, paddingTop: "34px" }}>
         <SectionTitle
           eyebrow="MULTI-DEVICE FOUNDATION"
           title="From one screen to an orchestra of devices."
@@ -433,7 +520,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="funding" style={sectionStyle}>
+      <section id="funding" className="contentSection" style={sectionStyle}>
         <SectionTitle
           eyebrow="PUBLIC RELEASE PROGRESS"
           title="Help turn a working breakthrough into a public product."
@@ -478,7 +565,7 @@ export default function Home() {
           </p>
         </div>
       </section>
-      <section id="support" style={sectionStyle}>
+      <section id="support" className="contentSection" style={sectionStyle}>
         <SectionTitle
           eyebrow="ACCELERATE THE LAUNCH"
           title="Build the future with us"
@@ -514,7 +601,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="roadmap" style={{ ...sectionStyle, paddingTop: "32px" }}>
+      <section id="roadmap" className="contentSection" style={{ ...sectionStyle, paddingTop: "32px" }}>
         <SectionTitle eyebrow="ROADMAP" title="A dependency-based path to the complete automation platform." />
         <div className="roadmapGrid">
           {roadmap.map(([stage, title, text]) => (
