@@ -1,30 +1,39 @@
 const builtItems = [
-  ["Gesture Recorder", "Implemented"],
-  ["Timeline Playback", "Implemented"],
-  ["Vision Recording", "Implemented"],
-  ["Scenario Hierarchy", "Implemented"],
-  ["MindMap Scenario Builder", "Implemented"],
-  ["Project Catalog & Gesture Editor", "Implemented"],
-  ["Remote & Windows Agent Foundation", "Implemented"],
-  ["Device Room & Screen Mirroring Foundation", "Implemented"],
-  ["Unified Widget Control", "Finalizing"],
-  ["Scene Recognition & Visual Matching", "Integration in progress"],
+  "Gesture Recorder",
+  "Timeline Playback",
+  "Vision Recording",
+  "Project / Season / Scenario / Scene / Step hierarchy",
+  "MindMap Scenario Builder",
+  "Project Catalog",
+  "Gesture Editor",
+  "Remote foundation",
+  "Windows Agent foundation",
+  "Device Room and screen mirroring foundation",
 ];
 
 const integrationItems = [
-  ["Unified Quick Start", "Widget → Recorder or Player → Start"],
-  ["Automatic Project Creation", "Start recording → project and scenario structure created"],
-  ["Smart Vision Loop", "Recognize → confirm → execute → re-scan when needed"],
-  ["Scenario Combination", "Combine projects while preserving the originals"],
-  ["Extended Visual Capture", "More visual states for animated and changing interfaces"],
-  ["Video to Project", "Turn selected video frames into a draft scenario structure"],
+  ["Unified Widget Control", "Move Recorder and Player controls into the central Widget and its satellites."],
+  ["Unified Quick Start", "Widget → Recorder or Player → Start, without opening the MindMap first."],
+  ["Automatic Project Creation", "Start recording → project and scenario structure created automatically."],
+  ["Scene Recognition Integration", "Determine the current scene and select the relevant scenario step."],
+  ["Visual State Confirmation", "Confirm the current screen state before gesture execution."],
+  ["Adaptive Re-Checking", "Re-scan when the screen differs, then continue when the state is confirmed."],
+  ["Scenario Combination", "Combine projects into a new project while preserving the originals."],
+  ["Video to Project", "Turn selected video frames into a draft Step structure for gesture completion."],
 ];
 
 const roadmap = [
   ["NOW", "Final integration", "Unified Widget, Quick Start and the complete Vision execution loop."],
-  ["NEXT", "Public testing", "Founder access, stability testing and Google Play preparation."],
+  ["NEXT", "Public testing", "Founder access, stability fixes and Google Play preparation."],
   ["THEN", "Multi-device", "Device Room, Windows Agent, mirrors and device-specific scenario branches."],
   ["FUTURE", "Automation ecosystem", "Marketplace, collaborative recognition and AI-operated workflows."],
+];
+
+const overviewLayers = [
+  ["Unified Widget", "One control centre for Recorder, Player, Timeline, Vision and MindMap."],
+  ["Single Device", "Record, build and replay directly on the current Android device."],
+  ["Scenario Builder", "Project → Season → Scenario → Scene → Step."],
+  ["Multi-Device Direction", "Remote devices, emulators and mirrors as the next platform stage."],
 ];
 
 const sectionStyle = {
@@ -35,8 +44,7 @@ const sectionStyle = {
 };
 
 const panelStyle = {
-  background:
-    "linear-gradient(145deg, rgba(13,30,53,0.94), rgba(4,10,19,0.96))",
+  background: "linear-gradient(145deg, rgba(13,30,53,0.94), rgba(4,10,19,0.96))",
   border: "1px solid rgba(104,202,255,0.18)",
   borderRadius: "28px",
   boxShadow: "0 28px 80px rgba(0,0,0,0.34)",
@@ -44,7 +52,7 @@ const panelStyle = {
 
 function SectionTitle({ eyebrow, title, text }) {
   return (
-    <div style={{ maxWidth: "760px", marginBottom: "34px" }}>
+    <div style={{ maxWidth: "780px", marginBottom: "34px" }}>
       <div className="eyebrow">{eyebrow}</div>
       <h2 className="sectionTitle">{title}</h2>
       {text ? <p className="sectionLead">{text}</p> : null}
@@ -52,27 +60,28 @@ function SectionTitle({ eyebrow, title, text }) {
   );
 }
 
-function Poster({ src, alt, portrait = false }) {
+function Poster({ src, alt }) {
   return (
-    <div
-      style={{
-        ...panelStyle,
-        padding: "8px",
-        overflow: "hidden",
-        maxWidth: portrait ? "820px" : "1400px",
-        margin: "0 auto",
-      }}
-    >
-      <img
-        src={src}
-        alt={alt}
-        style={{
-          display: "block",
-          width: "100%",
-          height: "auto",
-          borderRadius: "21px",
-        }}
-      />
+    <div className="posterFrame">
+      <img src={src} alt={alt} className="posterImage" />
+    </div>
+  );
+}
+
+function PosterSlot({ label, filename, description, reverse = false, ratio = "16 / 9" }) {
+  return (
+    <div className={`posterSlotRow${reverse ? " reverse" : ""}`}>
+      <div className="posterSlotCopy">
+        <div className="eyebrow">POSTER SLOT</div>
+        <h3>{label}</h3>
+        <p>{description}</p>
+        <code>{filename}</code>
+      </div>
+      <div className="posterSlot" style={{ aspectRatio: ratio }}>
+        <div className="slotCross" aria-hidden="true" />
+        <div className="slotLabel">{label}</div>
+        <div className="slotHint">Visual will be generated for this exact position</div>
+      </div>
     </div>
   );
 }
@@ -93,7 +102,7 @@ export default function Home() {
           font-family: Arial, Helvetica, sans-serif;
           background:
             radial-gradient(circle at 50% 0%, rgba(24,83,146,.42), transparent 28%),
-            radial-gradient(circle at 100% 30%, rgba(46,24,130,.18), transparent 28%),
+            radial-gradient(circle at 100% 35%, rgba(46,24,130,.17), transparent 28%),
             linear-gradient(180deg, #071322 0%, #02060d 38%, #030812 100%);
         }
         .header {
@@ -101,7 +110,7 @@ export default function Home() {
           top: 0;
           z-index: 20;
           border-bottom: 1px solid rgba(255,255,255,.07);
-          background: rgba(2,6,13,.78);
+          background: rgba(2,6,13,.8);
           backdrop-filter: blur(16px);
         }
         .headerInner {
@@ -142,8 +151,8 @@ export default function Home() {
           color: #8bddff;
           font-size: clamp(22px, 4vw, 38px);
           font-weight: 500;
+          line-height: 1.3;
         }
-        .heroProduct { color: #fff; }
         .heroLead {
           max-width: 720px;
           margin: 24px auto 0;
@@ -169,23 +178,74 @@ export default function Home() {
         }
         .primary { background: linear-gradient(135deg, #1d8dff, #6d36ff); box-shadow: 0 12px 30px rgba(37,126,255,.28); }
         .secondary { background: rgba(255,255,255,.045); color: #bceaff; }
-        .posterWrap { width: 100%; padding: 0 14px 68px; }
-        .sectionTitle { margin: 14px 0 0; font-size: clamp(30px, 5vw, 50px); line-height: 1.08; }
-        .sectionLead { margin: 18px 0 0; color: #9eb4ce; font-size: 17px; line-height: 1.75; }
-        .modeGrid, .builtGrid, .integrationGrid, .fundGrid, .roadmapGrid {
+        .posterWrap { width: 100%; padding: 0 14px 40px; }
+        .posterFrame {
+          max-width: 1400px; margin: 0 auto; padding: 8px; overflow: hidden;
+          background: linear-gradient(145deg, rgba(13,30,53,.94), rgba(4,10,19,.96));
+          border: 1px solid rgba(104,202,255,.18); border-radius: 28px;
+          box-shadow: 0 28px 80px rgba(0,0,0,.34);
+        }
+        .posterImage { display: block; width: 100%; height: auto; border-radius: 21px; }
+        .overviewGrid, .modeGrid, .builtGrid, .integrationGrid, .fundGrid, .roadmapGrid {
           display: grid; gap: 16px;
         }
+        .overviewGrid { max-width: 1200px; margin: 0 auto; padding: 0 20px 54px; grid-template-columns: repeat(4, minmax(0,1fr)); }
+        .overviewCard, .builtItem, .integrationItem {
+          padding: 19px; border-radius: 18px; background: rgba(255,255,255,.035); border: 1px solid rgba(255,255,255,.07);
+        }
+        .overviewCard strong { color: #d9f4ff; }
+        .overviewCard p, .integrationItem p { margin: 9px 0 0; color: #95abc5; line-height: 1.55; font-size: 14px; }
+        .sectionTitle { margin: 14px 0 0; font-size: clamp(30px, 5vw, 50px); line-height: 1.08; }
+        .sectionLead { margin: 18px 0 0; color: #9eb4ce; font-size: 17px; line-height: 1.75; }
         .modeGrid { grid-template-columns: repeat(2, minmax(0,1fr)); }
         .modeCard { padding: 29px; min-height: 290px; }
         .modeFlow { color: #fff; font-weight: 700; line-height: 1.7; }
         .modeCard ul { margin: 24px 0 0; padding-left: 19px; color: #a9bdd5; line-height: 1.9; }
         .builtGrid { grid-template-columns: repeat(2, minmax(0,1fr)); }
-        .builtItem, .integrationItem { padding: 19px; border-radius: 18px; background: rgba(255,255,255,.035); border: 1px solid rgba(255,255,255,.07); }
         .builtName { font-weight: 700; }
-        .badge { display: inline-block; margin-top: 10px; font-size: 11px; color: #86dfff; }
+        .badge { display: inline-block; margin-top: 10px; font-size: 11px; color: #79e8a0; }
         .integrationGrid { grid-template-columns: repeat(2, minmax(0,1fr)); }
-        .integrationItem p { margin: 9px 0 0; color: #95abc5; line-height: 1.55; }
-        .evolution { display: grid; grid-template-columns: .8fr 1.2fr; gap: 28px; align-items: center; }
+        .posterSlotRow {
+          display: grid;
+          grid-template-columns: .82fr 1.18fr;
+          gap: 28px;
+          align-items: center;
+          margin-top: 34px;
+        }
+        .posterSlotRow.reverse { grid-template-columns: 1.18fr .82fr; }
+        .posterSlotRow.reverse .posterSlotCopy { order: 2; }
+        .posterSlotRow.reverse .posterSlot { order: 1; }
+        .posterSlotCopy {
+          padding: 28px;
+          border-radius: 24px;
+          background: rgba(6,16,29,.66);
+          border: 1px solid rgba(98,201,255,.12);
+        }
+        .posterSlotCopy h3 { margin: 14px 0 0; font-size: clamp(25px, 4vw, 38px); }
+        .posterSlotCopy p { color: #9eb4ce; line-height: 1.7; }
+        .posterSlotCopy code { color: #6ed7ff; font-size: 12px; overflow-wrap: anywhere; }
+        .posterSlot {
+          position: relative;
+          min-height: 260px;
+          display: grid;
+          place-items: center;
+          padding: 24px;
+          overflow: hidden;
+          border-radius: 28px;
+          border: 1px dashed rgba(105,211,255,.45);
+          background:
+            linear-gradient(rgba(7,20,36,.82), rgba(4,10,19,.92)),
+            repeating-linear-gradient(90deg, transparent 0 39px, rgba(83,179,255,.07) 40px),
+            repeating-linear-gradient(0deg, transparent 0 39px, rgba(83,179,255,.07) 40px);
+          text-align: center;
+        }
+        .slotCross::before, .slotCross::after {
+          content: ""; position: absolute; left: 50%; top: 50%; width: 72%; height: 1px; background: rgba(102,205,255,.12);
+        }
+        .slotCross::before { transform: translate(-50%,-50%) rotate(24deg); }
+        .slotCross::after { transform: translate(-50%,-50%) rotate(-24deg); }
+        .slotLabel { position: relative; color: #bcecff; font-weight: 800; font-size: clamp(20px, 4vw, 34px); }
+        .slotHint { position: absolute; bottom: 25px; color: #637f9e; font-size: 12px; letter-spacing: 1px; }
         .fundGrid { grid-template-columns: 1.1fr .9fr; }
         .fundCard { padding: 32px; }
         .paymentButtons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
@@ -201,8 +261,12 @@ export default function Home() {
           .nav { display: none; }
           .hero { padding-top: 68px; }
           .hero h1 { letter-spacing: -1.6px; }
-          .modeGrid, .builtGrid, .integrationGrid, .fundGrid, .roadmapGrid, .evolution { grid-template-columns: 1fr; }
+          .modeGrid, .builtGrid, .integrationGrid, .fundGrid, .roadmapGrid, .overviewGrid, .posterSlotRow, .posterSlotRow.reverse { grid-template-columns: 1fr; }
+          .posterSlotRow.reverse .posterSlotCopy, .posterSlotRow.reverse .posterSlot { order: initial; }
           .posterWrap { padding-left: 8px; padding-right: 8px; }
+          .overviewGrid { padding-left: 20px; padding-right: 20px; }
+          .posterSlotCopy { padding: 22px; }
+          .posterSlot { min-height: 230px; }
         }
       `}</style>
 
@@ -212,20 +276,13 @@ export default function Home() {
             <div className="brand">VIVACAPERE</div>
             <div className="brandSub">ANDROID AUTOMATION ECOSYSTEM</div>
           </a>
-
           <nav className="nav" aria-label="Primary navigation">
             <a href="#product">Product</a>
             <a href="#technology">Technology</a>
             <a href="#roadmap">Roadmap</a>
             <a href="#support">Support</a>
           </nav>
-
-          <button
-            type="button"
-            className="profile"
-            aria-label="Vivacapere account access coming soon"
-            title="Account access coming soon"
-          >
+          <button type="button" className="profile" aria-label="Vivacapere account access coming soon" title="Account access coming soon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="1.8" />
               <path d="M4.5 20C5.2 15.8 7.8 13.5 12 13.5C16.2 13.5 18.8 15.8 19.5 20" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
@@ -236,11 +293,9 @@ export default function Home() {
 
       <section id="top" className="hero">
         <div className="eyebrow">WORKING ANDROID AUTOMATION SYSTEM</div>
-        <h1><span className="heroProduct">Vivacapere AutoClicker</span></h1>
-        <h2>Vision Scenario Builder · Multi-Device Orchestration</h2>
-        <p className="heroLead">
-          Record gestures, construct structured scenarios and execute automation through timeline or visual screen states.
-        </p>
+        <h1>Vivacapere AutoClicker</h1>
+        <h2>Vision Scenario Builder<br />Built for Multi-Device Orchestration</h2>
+        <p className="heroLead">Record gestures, construct structured scenarios and execute automation through timeline or visual screen states.</p>
         <div className="status">Final integration before public testing</div>
         <div className="actions">
           <a className="button primary" href="#support">Support Development</a>
@@ -249,10 +304,32 @@ export default function Home() {
       </section>
 
       <div className="posterWrap">
-        <Poster src="/new_poster_centralbutton.jpg" alt="Vivacapere central Widget architecture with single-device and multi-device automation" />
+        <Poster src="/new_poster_centralbutton.jpg" alt="Vivacapere platform overview with central Widget, single-device automation, scenario hierarchy and multi-device direction" />
+      </div>
+
+      <div className="overviewGrid">
+        {overviewLayers.map(([title, text]) => (
+          <div className="overviewCard" key={title}>
+            <strong>{title}</strong>
+            <p>{text}</p>
+          </div>
+        ))}
       </div>
 
       <section id="product" style={sectionStyle}>
+        <SectionTitle
+          eyebrow="SINGLE-DEVICE AUTOMATION"
+          title="Record, build and replay on one Android device."
+          text="The first public product centres on direct device automation. The existing Recorder, editable gesture flow and Player are being connected to the central Widget for true Quick Start."
+        />
+        <PosterSlot
+          label="Single Device"
+          filename="/single-device-poster.jpg"
+          description="Future visual: Widget → Recorder → editable Steps → Player, with Timeline and Vision as the two execution modes."
+        />
+      </section>
+
+      <section style={{ ...sectionStyle, paddingTop: "30px" }}>
         <SectionTitle
           eyebrow="TWO AUTOMATION MODES"
           title="Start simple. Add visual understanding when needed."
@@ -284,18 +361,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section style={{ ...sectionStyle, paddingTop: "42px" }}>
+      <section style={{ ...sectionStyle, paddingTop: "36px" }}>
         <SectionTitle
           eyebrow="BUILT AND WORKING"
           title="The system exists beyond the concept."
-          text="Core recording, playback, scenario and remote foundations are already implemented. The remaining work connects them into the final public workflow."
+          text="These product foundations already exist. The following integration section separately identifies what still has to be connected into the final public workflow."
         />
         <div style={{ ...panelStyle, padding: "20px" }}>
           <div className="builtGrid">
-            {builtItems.map(([name, status]) => (
+            {builtItems.map((name) => (
               <div className="builtItem" key={name}>
                 <div className="builtName">{name}</div>
-                <span className="badge">{status}</span>
+                <span className="badge">Implemented foundation</span>
               </div>
             ))}
           </div>
@@ -303,23 +380,37 @@ export default function Home() {
       </section>
 
       <section id="technology" style={sectionStyle}>
-        <div className="evolution">
-          <div>
-            <div className="eyebrow">INTERFACE EVOLUTION</div>
-            <h2 className="sectionTitle">From working panels to one unified Widget.</h2>
-            <p className="sectionLead">
-              Recorder and Player already operate through working control pipelines. The final interface moves those controls into the central Widget and its surrounding satellites, creating a direct Quick Start path without opening the MindMap first.
-            </p>
-          </div>
-          <Poster src="/old_panel_posters.jpg" alt="Working Recorder and Player control panels" />
-        </div>
+        <SectionTitle
+          eyebrow="STRUCTURED SCENARIO BUILDER"
+          title="From Project to editable Step."
+          text="Recording is organised through Project → Season → Scenario → Scene → Step. A Step connects its gesture with the relevant visual context, while MindMap provides the editing surface for the complete structure."
+        />
+        <PosterSlot
+          label="Scenario Builder / MindMap"
+          filename="/scenario-builder-poster.jpg"
+          description="Future visual: the hierarchy shown at readable scale, including the relationship between Scene, Step, gesture and visual state."
+          reverse
+        />
       </section>
 
-      <section style={{ ...sectionStyle, paddingTop: "40px" }}>
+      <section style={{ ...sectionStyle, paddingTop: "34px" }}>
+        <SectionTitle
+          eyebrow="INTERFACE EVOLUTION"
+          title="From working panels to one unified Widget."
+          text="Recorder and Player already operate through working control pipelines. The final interface transfers those controls into the central Widget and its surrounding satellites, creating a direct Quick Start path without opening MindMap first."
+        />
+        <PosterSlot
+          label="Panels → Unified Widget"
+          filename="/widget-transition-poster.jpg"
+          description="Replacement for the current broad panel poster: separate Recorder and Player controls on one side, central Widget modes and satellites on the other."
+        />
+      </section>
+
+      <section style={{ ...sectionStyle, paddingTop: "34px" }}>
         <SectionTitle
           eyebrow="FINAL INTEGRATION BEFORE TESTING"
-          title="A short list of focused release blockers."
-          text="The task is no longer to invent the platform. The task is to complete the final connections around Quick Start, automatic project creation and adaptive Vision execution."
+          title="Focused connections between existing systems."
+          text="The remaining work centres on Quick Start, automatic project creation and the complete Vision execution loop."
         />
         <div className="integrationGrid">
           {integrationItems.map(([name, description]) => (
@@ -329,66 +420,48 @@ export default function Home() {
             </article>
           ))}
         </div>
-      </section>
-
-      <section style={sectionStyle}>
-        <SectionTitle
-          eyebrow="PRODUCT VISION"
-          title="Vision Scenario Builder"
-          text="Gesture actions and visual states become one structured automation scenario. The image currently represents the product direction and will be revised as the public interface is finalized."
+        <PosterSlot
+          label="Vision Execution Loop"
+          filename="/vision-loop-poster.jpg"
+          description="Future visual: Observe → Recognize → Confirm → Execute → Re-check. The public poster will show the result without exposing the internal recognition recipe."
+          reverse
         />
-        <Poster src="/vision-poster.png" alt="Vision Scenario Builder product vision poster" portrait />
       </section>
 
       <section style={{ ...sectionStyle, paddingTop: "34px" }}>
         <SectionTitle
           eyebrow="NEXT PLATFORM STAGE"
           title="Multi-Device Orchestration"
-          text="The same scenario model expands from one Android device to phones, emulators, remote mirrors and device-specific execution branches."
+          text="The existing remote, Windows Agent, Device Room and mirroring foundations provide the base for extending the same scenario model across devices and emulators."
         />
-        <div className="modeGrid">
-          <div className="fundCard" style={panelStyle}>
-            <h3 style={{ marginTop: 0 }}>Single Device</h3>
-            <p className="sectionLead" style={{ fontSize: "15px" }}>
-              Record, build, recognize and replay directly on the current device.
-            </p>
-          </div>
-          <div className="fundCard" style={panelStyle}>
-            <h3 style={{ marginTop: 0 }}>Multi Device</h3>
-            <p className="sectionLead" style={{ fontSize: "15px" }}>
-              Device Room, Windows Agent, remote mirrors, emulators and orchestrated scenario branches.
-            </p>
-          </div>
-        </div>
+        <PosterSlot
+          label="Multi Device"
+          filename="/multi-device-poster.jpg"
+          description="Future visual: Vivacapere control centre connected to Windows Mirror, LDPlayer Mirror and Smartphone Mirror, clearly marked as the next platform stage."
+        />
       </section>
 
       <section id="support" style={sectionStyle}>
         <SectionTitle
           eyebrow="ACCELERATE THE LAUNCH"
           title="Support Development"
-          text="Support removes the remaining development, testing, hardware and founder-capacity barriers between the working system and public testing."
+          text="Support removes development, testing, hardware and founder-capacity barriers between the working system and public testing."
         />
         <div className="fundGrid">
           <div className="fundCard" style={panelStyle}>
             <h3 style={{ marginTop: 0, fontSize: "25px" }}>Founder Acceleration</h3>
-            <p className="sectionLead" style={{ fontSize: "15px" }}>
-              Continuous AI-assisted development, parallel hardware testing, release preparation, mobility, healthcare and a stable working environment.
-            </p>
+            <p className="sectionLead" style={{ fontSize: "15px" }}>Continuous AI-assisted development, parallel hardware testing, release preparation, mobility, healthcare and a stable working environment.</p>
             <div className="paymentButtons">
               <a className="paymentButton" href="#">Revolut</a>
               <a className="paymentButton" href="#">PayPal</a>
               <a className="paymentButton" href="#">Crypto</a>
             </div>
-            <p className="finePrint">
-              Payment links are placeholders until the final personal support links are inserted. Voluntary support does not provide equity, repayment rights or profit participation.
-            </p>
+            <p className="finePrint">Payment links remain placeholders until the final personal support links are inserted. Voluntary support does not provide equity, repayment rights or profit participation.</p>
           </div>
           <div className="fundCard" style={panelStyle}>
             <div className="eyebrow">EARLY PARTICIPATION</div>
             <h3 style={{ fontSize: "25px" }}>Founder access and private funding</h3>
-            <p className="sectionLead" style={{ fontSize: "15px" }}>
-              Closed testing, Founder Pass and private funding enquiries will be opened through separate terms and contact routes.
-            </p>
+            <p className="sectionLead" style={{ fontSize: "15px" }}>Closed testing, Founder Pass and private funding enquiries will use separate terms and contact routes.</p>
             <div className="paymentButtons">
               <a className="paymentButton" href="mailto:contact@vivacapere.ee">Contact Vivacapere</a>
             </div>
