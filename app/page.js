@@ -382,7 +382,7 @@ export default function Home() {
               The central Widget becomes Recorder, Player and scenario control without covering the screen with technical panels. Start quickly, record naturally, then open the full MindMap only when deeper editing is needed.
             </p>
           </div>
-          <Poster src="/old_panel_posters.jpg" alt="Working Recorder and Player control panels" />
+          <Poster src="/old_panel_to_New.jpg" alt="Working Recorder and Player control panels" />
         </div>
       </section>
 
