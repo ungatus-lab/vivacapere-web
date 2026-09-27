@@ -37,25 +37,24 @@ const roadmap = [
 // Public progress indicators. Update these values whenever the internal milestone state changes.
 // Funding totals and private thresholds are intentionally never exposed on the website.
 const releaseProgress = {
-  singleDevice: 84,
-  multiDevice: 46,
+  singleDevice: 99,
+  multiDevice: 60,
   marketplace: 0,
   aiIntegration: 0,
-  acceleration: 32,
 };
 
 const progressStages = [
   {
     key: "singleDevice",
     title: "Single Device",
-    status: "Final integration",
-    dependency: "Current release focus",
+    status: "Release candidate integration",
+    dependency: "Quick Start integration and release validation remain",
   },
   {
     key: "multiDevice",
     title: "Multi-Device",
-    status: "Foundation built · product integration in progress",
-    dependency: "Depends on Single Device",
+    status: "Remote foundation built · orchestration integration in progress",
+    dependency: "DXGI multi-screen delivery is working · emulator tiles, control and stability remain",
   },
   {
     key: "marketplace",
@@ -248,12 +247,12 @@ export default function Home() {
         .progressValue { color: #8de4ff; font-size: 22px; font-weight: 800; white-space: nowrap; }
         .progressTrack { height: 12px; margin-top: 18px; border-radius: 999px; overflow: hidden; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.06); }
         .progressFill { height: 100%; border-radius: inherit; background: linear-gradient(90deg,#178dff,#55d8ff,#8664ff); box-shadow: 0 0 18px rgba(72,198,255,.38); }
-        .progressDependency { margin-top: 11px; color: #6f89a7; font-size: 12px; }
-        .accelerationPanel { margin-top: 20px; padding: 28px; }
-        .accelerationTop { display: flex; justify-content: space-between; gap: 18px; align-items: center; }
-        .accelerationValue { color: #9ae9ff; font-size: 28px; font-weight: 900; }
-        .accelerationText { margin: 13px 0 0; color: #a8bdd5; line-height: 1.7; }
-        .privateFundingNote { margin-top: 13px; color: #6e87a4; font-size: 12px; line-height: 1.6; }
+.progressDependency { margin-top: 11px; color: #6f89a7; font-size: 12px; }  
+        .teamCapacity { margin-top: 20px; padding: 30px; display: grid; grid-template-columns: .55fr 1.45fr; gap: 30px; align-items: center; }
+        .teamCount { font-size: clamp(58px, 8vw, 94px); line-height: .9; font-weight: 900; color: #8de4ff; }
+        .teamLabel { margin-top: 12px; color: #aeeaff; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+        .teamDetails { color: #a8bdd5; line-height: 1.75; }
+        .teamDetails strong { color: #fff; }
         .proofLine { padding: 15px 18px; border-radius: 14px; background: rgba(71,203,255,.08); border: 1px solid rgba(87,207,255,.17); color: #b8edff; line-height: 1.6; }
         .roadmapCard { padding: 22px; }
         .roadmapStage { color: #69ceff; font-size: 11px; font-weight: 800; letter-spacing: 3px; }
@@ -297,7 +296,8 @@ export default function Home() {
           .sectionLead { font-size: 16px; line-height: 1.6; overflow-wrap: anywhere; }
           .modeGrid, .builtGrid, .integrationGrid, .fundGrid, .roadmapGrid, .evolution, .accessGrid { grid-template-columns: minmax(0, 1fr); }
           .modeCard { min-height: 0; padding: 24px 20px; }
-          .fundCard, .progressCard, .accelerationPanel, .accessCard { padding: 22px 18px; }
+          .fundCard, .progressCard, .accessCard, .teamCapacity { padding: 22px 18px; }
+          .teamCapacity { grid-template-columns: 1fr; gap: 20px; }
           section[style] { padding-left: 18px !important; padding-right: 18px !important; padding-top: 46px !important; padding-bottom: 46px !important; }
         }
       `}</style>
@@ -514,23 +514,21 @@ export default function Home() {
             );
           })}
         </div>
-        <div className="accelerationPanel" style={{ ...panelStyle, borderColor: "rgba(91,215,255,.34)" }}>
-          <div className="accelerationTop">
-            <div>
-              <div className="eyebrow">SUPPORT ACCELERATION</div>
-              <h3 style={{ margin: "11px 0 0", fontSize: "25px" }}>Current release velocity</h3>
-            </div>
-            <div className="accelerationValue">{releaseProgress.acceleration}%</div>
+        <div className="teamCapacity" style={{ ...panelStyle, borderColor: "rgba(91,215,255,.34)" }}>
+          <div>
+            <div className="eyebrow">TEAM COMPOSITION</div>
+            <div className="teamCount">1</div>
+            <div className="teamLabel">Founder</div>
           </div>
-          <div className="progressTrack">
-            <div className="progressFill" style={{ width: `${releaseProgress.acceleration}%` }} />
+          <div className="teamDetails">
+            <h3 style={{ margin: 0, fontSize: "27px" }}>One founder built the working platform.</h3>
+            <p>
+              Founder-led architecture, AI-assisted implementation and continuous hands-on device testing brought Single Device to release-candidate integration and established the working Multi-Device remote foundation.
+            </p>
+            <p style={{ marginBottom: 0 }}>
+              <strong>Additional capacity expands parallel implementation, hardware validation and release speed.</strong>
+            </p>
           </div>
-          <p className="accelerationText">
-            This indicator reflects current development capacity, hardware validation coverage and parallel integration speed. Financial totals and internal thresholds remain private.
-          </p>
-          <p className="privateFundingNote">
-            Updated as development capacity and release conditions change.
-          </p>
         </div>
       </section>
       <section id="support" style={sectionStyle}>
@@ -564,9 +562,6 @@ export default function Home() {
               <a className="button secondary" href="mailto:contact@vivacapere.ee?subject=Project%20Support">View Support Options</a>
             </div>
           </article>
-        </div>
-        <div style={{ marginTop: "28px" }}>
-          <Poster src="/vision-poster.png" alt="Vivacapere early participation and launch vision poster" portrait />
         </div>
       </section>
       <section id="roadmap" style={{ ...sectionStyle, paddingTop: "32px" }}>
