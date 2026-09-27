@@ -8,10 +8,10 @@ const builtItems = [
   ["Timeline Player", "Built and tested"],
   ["Vision Recording & TransScan", "Built and tested"],
   ["Visual Templates & Matcher", "Built · final integration"],
-  ["Project → Season → Scenario → Scene → Step", "Implemented"],
-  ["MindMap Scenario Builder", "Implemented"],
-  ["Project Catalog & Gesture Editor", "Implemented"],
-  ["Scanner & Encoder", "Implemented"],
+  ["Project → Season → Scenario → Scene → Step", "Built and working"],
+  ["MindMap Scenario Builder", "Built and working"],
+  ["Project Catalog & Gesture Editor", "Built and working"],
+  ["Scanner & Encoder", "Built and working"],
   ["Remote Desktop & Windows Agent", "Working foundation"],
   ["Multi-PC Device Room & Live Mirrors", "Working foundation"],
   ["WebRTC Media & Remote Input Channel", "Implemented · stabilizing"],
@@ -72,7 +72,6 @@ const progressStages = [
 ];
 
 const sectionStyle = {
-  width: "100%",
   maxWidth: "1200px",
   margin: "0 auto",
   padding: "72px 20px",
@@ -219,7 +218,6 @@ export default function Home() {
         .primary { background: linear-gradient(135deg, #1d8dff, #6d36ff); box-shadow: 0 12px 30px rgba(37,126,255,.28); }
         .secondary { background: rgba(255,255,255,.045); color: #bceaff; }
         .posterWrap { width: 100%; padding: 0 14px 68px; }
-        .contentSection { width: 100%; }
         .sectionTitle { margin: 14px 0 0; font-size: clamp(30px, 5vw, 50px); line-height: 1.08; }
         .sectionLead { margin: 18px 0 0; color: #9eb4ce; font-size: 17px; line-height: 1.75; }
         .modeGrid, .builtGrid, .integrationGrid, .fundGrid, .roadmapGrid {
@@ -261,89 +259,46 @@ export default function Home() {
         .roadmapStage { color: #69ceff; font-size: 11px; font-weight: 800; letter-spacing: 3px; }
         .roadmapCard h3 { margin: 12px 0 0; }
         .roadmapCard p { margin: 12px 0 0; color: #91a8c2; line-height: 1.6; font-size: 14px; }
+        .scenarioPlaceholder {
+          min-height: 360px;
+          padding: clamp(28px, 6vw, 64px);
+          display: grid;
+          place-items: center;
+          text-align: center;
+          border: 1px dashed rgba(105,206,255,.34);
+          border-radius: 28px;
+          background: radial-gradient(circle at 50% 45%, rgba(45,123,188,.16), transparent 42%), rgba(5,16,29,.72);
+        }
+        .scenarioPlaceholderFlow { margin-top: 20px; color: #aeeaff; font-weight: 700; line-height: 1.8; }
+        .accessGrid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
+        .accessCard { padding: 30px; min-height: 310px; display: flex; flex-direction: column; }
+        .accessNumber { color: #69ceff; font-size: 11px; font-weight: 800; letter-spacing: 3px; }
+        .accessCard h3 { margin: 14px 0 0; font-size: 25px; }
+        .accessCard p { color: #9db3ce; line-height: 1.7; }
+        .accessAction { margin-top: auto; padding-top: 24px; }
+        .accessAction a { width: 100%; }
         .footer { border-top: 1px solid rgba(255,255,255,.08); padding: 42px 20px; text-align: center; color: #7187a3; }
         @media (max-width: 820px) {
-          .headerInner {
-            width: 100%;
-            padding: 12px 16px;
-          }
+          .headerInner { width: 100%; padding: 12px 16px; }
           .brand { font-size: 15px; letter-spacing: 2.2px; }
           .brandSub { font-size: 8px; letter-spacing: .7px; }
           .profile { width: 38px; height: 38px; flex: 0 0 38px; }
           .nav { display: none; }
-          .hero {
-            width: 100%;
-            padding: 48px 18px 30px;
-          }
-          .eyebrow {
-            font-size: 10px;
-            letter-spacing: 2.2px;
-            overflow-wrap: anywhere;
-          }
-          .hero h1 {
-            font-size: clamp(42px, 13vw, 58px);
-            line-height: .94;
-            letter-spacing: -1.8px;
-            overflow-wrap: anywhere;
-          }
-          .hero h2 {
-            font-size: clamp(21px, 6.3vw, 29px);
-            line-height: 1.18;
-          }
-          .heroLead {
-            max-width: 100%;
-            font-size: 17px;
-            line-height: 1.58;
-          }
-          .status {
-            display: flex;
-            width: 100%;
-            justify-content: center;
-            text-align: center;
-            line-height: 1.4;
-          }
-          .actions {
-            width: 100%;
-            margin-top: 22px;
-            gap: 10px;
-          }
-          .button {
-            width: 100%;
-            min-height: 50px;
-            padding: 12px 16px;
-            text-align: center;
-          }
-          .posterWrap {
-            padding: 0 10px 26px;
-          }
-          .posterWrap > div,
-          .evolution > div,
-          section > div {
-            max-width: 100%;
-          }
-          .contentSection {
-            padding-left: 18px !important;
-            padding-right: 18px !important;
-            padding-top: 46px !important;
-            padding-bottom: 46px !important;
-          }
-          .contentSection + .contentSection { padding-top: 34px !important; }
-          .sectionTitle {
-            font-size: clamp(32px, 10vw, 44px);
-            overflow-wrap: anywhere;
-          }
-          .sectionLead {
-            font-size: 16px;
-            line-height: 1.6;
-            overflow-wrap: anywhere;
-          }
-          .modeGrid, .builtGrid, .integrationGrid, .fundGrid, .roadmapGrid, .evolution {
-            grid-template-columns: minmax(0, 1fr);
-          }
+          .hero { width: 100%; padding: 48px 18px 30px; }
+          .eyebrow { font-size: 10px; letter-spacing: 2.2px; overflow-wrap: anywhere; }
+          .hero h1 { font-size: clamp(42px, 13vw, 58px); line-height: .94; letter-spacing: -1.8px; overflow-wrap: anywhere; }
+          .hero h2 { font-size: clamp(21px, 6.3vw, 29px); line-height: 1.18; }
+          .heroLead { max-width: 100%; font-size: 17px; line-height: 1.58; }
+          .status { display: flex; width: 100%; justify-content: center; text-align: center; line-height: 1.4; }
+          .actions { width: 100%; margin-top: 22px; gap: 10px; }
+          .button { width: 100%; min-height: 50px; padding: 12px 16px; text-align: center; }
+          .posterWrap { padding: 0 10px 26px; }
+          .sectionTitle { font-size: clamp(32px, 10vw, 44px); overflow-wrap: anywhere; }
+          .sectionLead { font-size: 16px; line-height: 1.6; overflow-wrap: anywhere; }
+          .modeGrid, .builtGrid, .integrationGrid, .fundGrid, .roadmapGrid, .evolution, .accessGrid { grid-template-columns: minmax(0, 1fr); }
           .modeCard { min-height: 0; padding: 24px 20px; }
-          .fundCard, .progressCard, .accelerationPanel { padding: 22px 18px; }
-          .progressHead, .accelerationTop { align-items: flex-start; }
-          .progressStatus { overflow-wrap: anywhere; }
+          .fundCard, .progressCard, .accelerationPanel, .accessCard { padding: 22px 18px; }
+          section[style] { padding-left: 18px !important; padding-right: 18px !important; padding-top: 46px !important; padding-bottom: 46px !important; }
         }
       `}</style>
 
@@ -380,7 +335,7 @@ export default function Home() {
       <section id="top" className="hero">
         <div className="eyebrow">THE SCREEN BECOMES THE TRIGGER</div>
         <h1><span className="heroProduct">Vivacapere AutoClicker</span></h1>
-        <h2>Vision Scenario Builder · Multi-Device Orchestration</h2>
+        <h2>Scenario Constructor · Multi-Device Orchestration</h2>
         <p className="heroLead">
           Record what should happen. Let Vision understand when it should happen. Vivacapere connects real screen states with gestures, scenarios and devices, turning visible change into the trigger for automation.
         </p>
@@ -396,7 +351,7 @@ export default function Home() {
         <Poster src="/new_poster_centralbutton.jpg" alt="Vivacapere central Widget architecture with single-device and multi-device automation" />
       </div>
 
-      <section id="product" className="contentSection" style={sectionStyle}>
+      <section id="product" style={sectionStyle}>
         <SectionTitle
           eyebrow="TWO AUTOMATION MODES"
           title="Automation that can see before it acts."
@@ -404,7 +359,7 @@ export default function Home() {
         />
         <div className="modeGrid">
           <article className="modeCard" style={{ ...panelStyle, borderColor: "rgba(92,255,132,.22)" }}>
-            <div className="eyebrow" style={{ color: "#69ff87" }}>TIMELINE · FREE</div>
+            <div className="eyebrow" style={{ color: "#69ff87" }}>TIMELINE · BASIC</div>
             <h3 style={{ fontSize: "27px", margin: "15px 0" }}>Record once. Replay precisely.</h3>
             <div className="modeFlow">Record gestures → Save timeline → Replay</div>
             <ul>
@@ -428,7 +383,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="contentSection" style={{ ...sectionStyle, paddingTop: "34px", paddingBottom: "34px" }}>
+      <section style={{ ...sectionStyle, paddingTop: "34px", paddingBottom: "34px" }}>
         <div style={{ ...panelStyle, padding: "clamp(28px, 6vw, 64px)", textAlign: "center", borderColor: "rgba(91,215,255,.32)" }}>
           <div className="eyebrow">FROM BLIND REPLAY TO VISUAL ACTION</div>
           <h2 className="sectionTitle" style={{ maxWidth: "900px", marginLeft: "auto", marginRight: "auto" }}>
@@ -442,7 +397,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section id="proof" className="contentSection" style={{ ...sectionStyle, paddingTop: "42px" }}>
+      <section id="proof" style={{ ...sectionStyle, paddingTop: "42px" }}>
         <SectionTitle
           eyebrow="BUILT AND WORKING"
           title="A year of development is already inside the product."
@@ -460,7 +415,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="technology" className="contentSection" style={sectionStyle}>
+      <section id="technology" style={sectionStyle}>
         <div className="evolution">
           <div>
             <div className="eyebrow">INTERFACE EVOLUTION</div>
@@ -473,7 +428,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="contentSection" style={{ ...sectionStyle, paddingTop: "40px" }}>
+      <section style={{ ...sectionStyle, paddingTop: "40px" }}>
         <SectionTitle
           eyebrow="FINAL INTEGRATION BEFORE TESTING"
           title="The invention is built. The release experience is being completed."
@@ -489,16 +444,29 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="contentSection" style={sectionStyle}>
+      <section style={sectionStyle}>
         <SectionTitle
-          eyebrow="PRODUCT VISION"
-          title="Vision Scenario Builder"
-          text="A gesture is no longer separated from reality. Recorder captures the action together with its visual context. Vision recognizes the current scene, confirms the state and selects the relevant step. The result is automation that responds to what the screen shows, not only to a blind timer."
+          eyebrow="SCENARIO ARCHITECTURE"
+          title="Scenario Constructor"
+          text="Record actions into a structured Project → Season → Scenario → Scene → Step hierarchy. Timeline follows the ordered path. Vision adds visual context and state recognition. MindMap displays, edits and branches the same underlying scenario structure."
         />
-        <Poster src="/vision-poster.png" alt="Vision Scenario Builder product vision poster" portrait />
+        <div className="scenarioPlaceholder">
+          <div>
+            <div className="eyebrow">NEW SCENARIO CONSTRUCTOR VISUAL</div>
+            <h3 style={{ margin: "16px 0 0", fontSize: "clamp(26px, 5vw, 42px)" }}>
+              Project → Season → Scenario → Scene → Step
+            </h3>
+            <div className="scenarioPlaceholderFlow">
+              Record → Create structure → Add Steps → Continue or branch
+            </div>
+            <p className="sectionLead" style={{ maxWidth: "700px", marginLeft: "auto", marginRight: "auto" }}>
+              The final architecture poster will be placed here.
+            </p>
+          </div>
+        </div>
       </section>
 
-      <section className="contentSection" style={{ ...sectionStyle, paddingTop: "34px" }}>
+      <section style={{ ...sectionStyle, paddingTop: "34px" }}>
         <SectionTitle
           eyebrow="MULTI-DEVICE FOUNDATION"
           title="From one screen to an orchestra of devices."
@@ -520,11 +488,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="funding" className="contentSection" style={sectionStyle}>
+      <section id="funding" style={sectionStyle}>
         <SectionTitle
           eyebrow="PUBLIC RELEASE PROGRESS"
-          title="Help turn a working breakthrough into a public product."
-          text="The technology has crossed the invention stage. Support now increases development capacity, hardware coverage and integration speed. Each completed layer unlocks the next: Single Device → Multi-Device → Marketplace → AI Integration."
+          title="The path from working system to complete platform."
+          text="Each completed layer unlocks the next: Single Device → Multi-Device → Marketplace → AI Integration. Public progress shows where the platform stands today and how quickly the release path is moving."
         />
         <div className="progressStack">
           {progressStages.map((stage) => {
@@ -550,7 +518,7 @@ export default function Home() {
           <div className="accelerationTop">
             <div>
               <div className="eyebrow">SUPPORT ACCELERATION</div>
-              <h3 style={{ margin: "11px 0 0", fontSize: "25px" }}>Release acceleration power</h3>
+              <h3 style={{ margin: "11px 0 0", fontSize: "25px" }}>Current release velocity</h3>
             </div>
             <div className="accelerationValue">{releaseProgress.acceleration}%</div>
           </div>
@@ -558,50 +526,50 @@ export default function Home() {
             <div className="progressFill" style={{ width: `${releaseProgress.acceleration}%` }} />
           </div>
           <p className="accelerationText">
-            Every increase in support gives the project more continuous development time, broader device testing and more parallel integration. The effect is shown here as acceleration power, while financial totals remain private.
+            This indicator reflects current development capacity, hardware validation coverage and parallel integration speed. Financial totals and internal thresholds remain private.
           </p>
           <p className="privateFundingNote">
-            Financial totals and internal release thresholds remain private. This indicator reflects their practical effect on development speed.
+            Updated as development capacity and release conditions change.
           </p>
         </div>
       </section>
-      <section id="support" className="contentSection" style={sectionStyle}>
+      <section id="support" style={sectionStyle}>
         <SectionTitle
-          eyebrow="ACCELERATE THE LAUNCH"
-          title="Build the future with us"
-          text="Vivacapere already has eyes, memory and hands. Support helps complete the product experience, test it on more real hardware and bring visual automation to the people who have been waiting for more than another blind macro recorder."
+          eyebrow="ENTER THE VIVACAPERE ECOSYSTEM"
+          title="Choose how you enter what comes next."
+          text="Vivacapere is approaching public testing. Early participants can secure access, explore private investment participation or contribute directly to release acceleration. Each path is separate and designed for a different level of involvement."
         />
-        <div className="fundGrid">
-          <div className="fundCard" style={panelStyle}>
-            <h3 style={{ marginTop: 0, fontSize: "25px" }}>Accelerate public release</h3>
-            <p className="sectionLead" style={{ fontSize: "15px" }}>
-              Any contribution strengthens final integration, continuous development, hardware validation, infrastructure and public release preparation.
-            </p>
-            <div className="paymentButtons">
-              <a className="paymentButton" href="#">Revolut</a>
-              <a className="paymentButton" href="#">PayPal</a>
-              <a className="paymentButton" href="#">Crypto</a>
+        <div className="accessGrid">
+          <article className="accessCard" style={{ ...panelStyle, borderColor: "rgba(74,168,255,.36)" }}>
+            <div className="accessNumber">01 · EARLY ACCESS</div>
+            <h3>Founder Pass</h3>
+            <p>Enter closed testing, follow releases from inside the founder community and receive early access to upcoming platform layers.</p>
+            <div className="accessAction">
+              <a className="button primary" href="mailto:contact@vivacapere.ee?subject=Founder%20Pass">Request Founder Access</a>
             </div>
-            <p className="finePrint">
-              Payment links are placeholders until the final personal support links are inserted. Voluntary support does not provide equity, repayment rights or profit participation.
-            </p>
-          </div>
-          <div id="investors" className="fundCard" style={panelStyle}>
-            <div className="eyebrow">THREE SEPARATE PATHS</div>
-            <h3 style={{ fontSize: "25px" }}>Founder Pass · Donate · Investor Program</h3>
-            <p className="sectionLead" style={{ fontSize: "15px" }}>
-              Founder Pass is early access. Donate is voluntary support without equity. The Investor Program is a separate private route for economic participation in the Vivacapere AutoClicker product, subject to formal terms and agreement.
-            </p>
-            <div className="paymentButtons">
-              <a className="paymentButton" href="mailto:contact@vivacapere.ee?subject=Founder%20Pass">Request Founder Pass</a>
-              <a className="paymentButton" href="mailto:contact@vivacapere.ee?subject=Investor%20Program">Request Investor Information</a>
+          </article>
+          <article id="investors" className="accessCard" style={{ ...panelStyle, borderColor: "rgba(142,99,255,.42)" }}>
+            <div className="accessNumber">02 · PRIVATE PARTICIPATION</div>
+            <h3>Investor Program</h3>
+            <p>Request private information about economic participation in the Vivacapere AutoClicker product under separately agreed legal and financial terms.</p>
+            <div className="accessAction">
+              <a className="button secondary" href="mailto:contact@vivacapere.ee?subject=Investor%20Program">Request Investor Information</a>
             </div>
-            <p className="finePrint">Investor participation is not a donation or a Founder Pass. Exact profit definitions, accounting periods, payment procedures and legal terms must be agreed separately before funds are accepted.</p>
-          </div>
+          </article>
+          <article className="accessCard" style={panelStyle}>
+            <div className="accessNumber">03 · RELEASE ACCELERATION</div>
+            <h3>Support the Project</h3>
+            <p>Contribute voluntarily to development continuity, broader hardware validation and preparation for public release. Support does not provide equity or repayment rights.</p>
+            <div className="accessAction">
+              <a className="button secondary" href="mailto:contact@vivacapere.ee?subject=Project%20Support">View Support Options</a>
+            </div>
+          </article>
+        </div>
+        <div style={{ marginTop: "28px" }}>
+          <Poster src="/vision-poster.png" alt="Vivacapere early participation and launch vision poster" portrait />
         </div>
       </section>
-
-      <section id="roadmap" className="contentSection" style={{ ...sectionStyle, paddingTop: "32px" }}>
+      <section id="roadmap" style={{ ...sectionStyle, paddingTop: "32px" }}>
         <SectionTitle eyebrow="ROADMAP" title="A dependency-based path to the complete automation platform." />
         <div className="roadmapGrid">
           {roadmap.map(([stage, title, text]) => (
