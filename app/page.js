@@ -47,14 +47,14 @@ const progressStages = [
   {
     key: "singleDevice",
     title: "Single Device",
-    status: "Release candidate integration",
+    status: "Release-candidate integration",
     dependency: "Quick Start integration and release validation remain",
   },
   {
     key: "multiDevice",
     title: "Multi-Device",
     status: "Remote foundation built · orchestration integration in progress",
-    dependency: "DXGI multi-screen delivery is working · emulator tiles, control and stability remain",
+    dependency: "DXGI multi-screen delivery works · emulator tiles, control adaptation and stability remain",
   },
   {
     key: "marketplace",
@@ -247,9 +247,11 @@ export default function Home() {
         .progressValue { color: #8de4ff; font-size: 22px; font-weight: 800; white-space: nowrap; }
         .progressTrack { height: 12px; margin-top: 18px; border-radius: 999px; overflow: hidden; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.06); }
         .progressFill { height: 100%; border-radius: inherit; background: linear-gradient(90deg,#178dff,#55d8ff,#8664ff); box-shadow: 0 0 18px rgba(72,198,255,.38); }
-.progressDependency { margin-top: 11px; color: #6f89a7; font-size: 12px; }  
-        .teamCapacity { margin-top: 20px; padding: 30px; display: grid; grid-template-columns: .55fr 1.45fr; gap: 30px; align-items: center; }
-        .teamCount { font-size: clamp(58px, 8vw, 94px); line-height: .9; font-weight: 900; color: #8de4ff; }
+        .progressDependency { margin-top: 11px; color: #6f89a7; font-size: 12px; }
+        .lockedBadge { color: #91a8c2; font-size: 13px; font-weight: 800; letter-spacing: 2px; }
+        .lockedTrack { height: 12px; margin-top: 18px; border-radius: 999px; background: repeating-linear-gradient(135deg, rgba(255,255,255,.035) 0 8px, rgba(255,255,255,.065) 8px 16px); border: 1px solid rgba(255,255,255,.06); }
+        .teamCapacity { margin-top: 20px; padding: 30px; display: grid; grid-template-columns: .5fr 1.5fr; gap: 30px; align-items: center; }
+        .teamCount { font-size: clamp(64px, 8vw, 96px); line-height: .9; font-weight: 900; color: #8de4ff; }
         .teamLabel { margin-top: 12px; color: #aeeaff; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
         .teamDetails { color: #a8bdd5; line-height: 1.75; }
         .teamDetails strong { color: #fff; }
@@ -297,7 +299,7 @@ export default function Home() {
           .modeGrid, .builtGrid, .integrationGrid, .fundGrid, .roadmapGrid, .evolution, .accessGrid { grid-template-columns: minmax(0, 1fr); }
           .modeCard { min-height: 0; padding: 24px 20px; }
           .fundCard, .progressCard, .accessCard, .teamCapacity { padding: 22px 18px; }
-          .teamCapacity { grid-template-columns: 1fr; gap: 20px; }
+          .teamCapacity { grid-template-columns: 1fr; gap: 18px; }
           section[style] { padding-left: 18px !important; padding-right: 18px !important; padding-top: 46px !important; padding-bottom: 46px !important; }
         }
       `}</style>
@@ -384,16 +386,13 @@ export default function Home() {
       </section>
 
       <section style={{ ...sectionStyle, paddingTop: "34px", paddingBottom: "34px" }}>
-        <div style={{ ...panelStyle, padding: "clamp(28px, 6vw, 64px)", textAlign: "center", borderColor: "rgba(91,215,255,.32)" }}>
+        <div style={{ ...panelStyle, padding: "clamp(24px, 4vw, 42px)", textAlign: "center", borderColor: "rgba(91,215,255,.32)" }}>
           <div className="eyebrow">FROM BLIND REPLAY TO VISUAL ACTION</div>
           <h2 className="sectionTitle" style={{ maxWidth: "900px", marginLeft: "auto", marginRight: "auto" }}>
             Give automation eyes, memory and hands.
           </h2>
-          <p className="sectionLead" style={{ maxWidth: "820px", marginLeft: "auto", marginRight: "auto" }}>
-            A captured screen frame becomes meaningful context. A scene becomes a recognizable state. A gesture becomes the action connected to that state. A scenario becomes a reusable chain of visual decisions. Multi-Device turns those chains into orchestration across an entire environment.
-          </p>
-          <div className="proofLine" style={{ maxWidth: "760px", margin: "28px auto 0" }}>
-            See the state → recognize the scene → confirm the moment → execute the action → continue the scenario.
+          <div className="proofLine" style={{ maxWidth: "820px", margin: "24px auto 0" }}>
+            Capture the screen state → recognize the scene → confirm the moment → execute the action → continue the scenario.
           </div>
         </div>
       </section>
@@ -452,7 +451,7 @@ export default function Home() {
         />
         <div className="scenarioPlaceholder">
           <div>
-            <div className="eyebrow">NEW SCENARIO CONSTRUCTOR VISUAL</div>
+            <div className="eyebrow">STRUCTURED AUTOMATION</div>
             <h3 style={{ margin: "16px 0 0", fontSize: "clamp(26px, 5vw, 42px)" }}>
               Project → Season → Scenario → Scene → Step
             </h3>
@@ -460,7 +459,7 @@ export default function Home() {
               Record → Create structure → Add Steps → Continue or branch
             </div>
             <p className="sectionLead" style={{ maxWidth: "700px", marginLeft: "auto", marginRight: "auto" }}>
-              The final architecture poster will be placed here.
+              Every recorded gesture becomes part of an editable scenario path. Timeline executes the order. Vision connects execution to the recognized screen state.
             </p>
           </div>
         </div>
@@ -504,11 +503,19 @@ export default function Home() {
                     <h3 className="progressTitle">{stage.title}</h3>
                     <div className="progressStatus">{stage.status}</div>
                   </div>
-                  <div className="progressValue">{value}%</div>
+                  {value === 0 ? (
+                    <div className="lockedBadge">LOCKED</div>
+                  ) : (
+                    <div className="progressValue">{value}%</div>
+                  )}
                 </div>
-                <div className="progressTrack" aria-label={`${stage.title} readiness ${value}%`}>
-                  <div className="progressFill" style={{ width: `${value}%` }} />
-                </div>
+                {value === 0 ? (
+                  <div className="lockedTrack" aria-label={`${stage.title} locked`} />
+                ) : (
+                  <div className="progressTrack" aria-label={`${stage.title} readiness ${value}%`}>
+                    <div className="progressFill" style={{ width: `${value}%` }} />
+                  </div>
+                )}
                 <div className="progressDependency">{stage.dependency}</div>
               </article>
             );
@@ -523,7 +530,7 @@ export default function Home() {
           <div className="teamDetails">
             <h3 style={{ margin: 0, fontSize: "27px" }}>One founder built the working platform.</h3>
             <p>
-              Founder-led architecture, AI-assisted implementation and continuous hands-on device testing brought Single Device to release-candidate integration and established the working Multi-Device remote foundation.
+              Founder-led architecture, AI-assisted implementation and continuous hands-on testing brought Single Device to release-candidate integration and established the working Multi-Device remote foundation.
             </p>
             <p style={{ marginBottom: 0 }}>
               <strong>Additional capacity expands parallel implementation, hardware validation and release speed.</strong>
@@ -531,11 +538,24 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section id="roadmap" style={{ ...sectionStyle, paddingTop: "32px" }}>
+        <SectionTitle eyebrow="ROADMAP" title="A dependency-based path to the complete automation platform." />
+        <div className="roadmapGrid">
+          {roadmap.map(([stage, title, text]) => (
+            <article className="roadmapCard" style={panelStyle} key={stage}>
+              <div className="roadmapStage">{stage}</div>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section id="support" style={sectionStyle}>
         <SectionTitle
           eyebrow="ENTER THE VIVACAPERE ECOSYSTEM"
-          title="Choose how you enter what comes next."
-          text="Vivacapere is approaching public testing. Early participants can secure access, explore private investment participation or contribute directly to release acceleration. Each path is separate and designed for a different level of involvement."
+          title="Enter the next stage of Vivacapere."
+          text="Vivacapere is approaching public testing. Early participants can secure founder access, request private investment information or contribute directly to release acceleration. Each path is separate and designed for a different level of involvement."
         />
         <div className="accessGrid">
           <article className="accessCard" style={{ ...panelStyle, borderColor: "rgba(74,168,255,.36)" }}>
@@ -564,19 +584,6 @@ export default function Home() {
           </article>
         </div>
       </section>
-      <section id="roadmap" style={{ ...sectionStyle, paddingTop: "32px" }}>
-        <SectionTitle eyebrow="ROADMAP" title="A dependency-based path to the complete automation platform." />
-        <div className="roadmapGrid">
-          {roadmap.map(([stage, title, text]) => (
-            <article className="roadmapCard" style={panelStyle} key={stage}>
-              <div className="roadmapStage">{stage}</div>
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <footer className="footer">
         <div style={{ color: "#a8c6e6", letterSpacing: "2px" }}>VIVACAPERE OÜ</div>
         <div style={{ marginTop: "10px", fontSize: "13px" }}>Privacy Policy · Terms · Contact</div>
