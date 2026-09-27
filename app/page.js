@@ -278,6 +278,19 @@ export default function Home() {
         .accessCard p { color: #9db3ce; line-height: 1.7; }
         .accessAction { margin-top: auto; padding-top: 24px; }
         .accessAction a { width: 100%; }
+        .contactGrid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 16px; }
+        .contactCard { padding: 30px; }
+        .contactCard h3 { margin: 0 0 18px; font-size: 24px; }
+        .contactRows { display: grid; gap: 14px; }
+        .contactRow { padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,.07); }
+        .contactRow:last-child { padding-bottom: 0; border-bottom: 0; }
+        .contactLabel { color: #6f89a7; font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; }
+        .contactValue { margin-top: 6px; color: #d9efff; line-height: 1.55; overflow-wrap: anywhere; }
+        .contactLink { color: #8de4ff; }
+        .contactLink:hover { color: #fff; }
+        .footerLinks { margin-top: 10px; display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 14px; font-size: 13px; }
+        .footerLinks a:hover { color: #bceaff; }
+        .footerPending { color: #526780; }
         .footer { border-top: 1px solid rgba(255,255,255,.08); padding: 42px 20px; text-align: center; color: #7187a3; }
         @media (max-width: 820px) {
           .headerInner { width: 100%; padding: 12px 16px; }
@@ -296,9 +309,9 @@ export default function Home() {
           .posterWrap { padding: 0 10px 26px; }
           .sectionTitle { font-size: clamp(32px, 10vw, 44px); overflow-wrap: anywhere; }
           .sectionLead { font-size: 16px; line-height: 1.6; overflow-wrap: anywhere; }
-          .modeGrid, .builtGrid, .integrationGrid, .fundGrid, .roadmapGrid, .evolution, .accessGrid { grid-template-columns: minmax(0, 1fr); }
+          .modeGrid, .builtGrid, .integrationGrid, .fundGrid, .roadmapGrid, .evolution, .accessGrid, .contactGrid { grid-template-columns: minmax(0, 1fr); }
           .modeCard { min-height: 0; padding: 24px 20px; }
-          .fundCard, .progressCard, .accessCard, .teamCapacity { padding: 22px 18px; }
+          .fundCard, .progressCard, .accessCard, .teamCapacity, .contactCard { padding: 22px 18px; }
           .teamCapacity { grid-template-columns: 1fr; gap: 18px; }
           section[style] { padding-left: 18px !important; padding-right: 18px !important; padding-top: 46px !important; padding-bottom: 46px !important; }
         }
@@ -317,7 +330,7 @@ export default function Home() {
             <a href="#proof">Built</a>
             <a href="#funding">Funding</a>
             <a href="#roadmap">Roadmap</a>
-            <a href="#support">Support</a>
+            <a href="#contact">Contact</a>
           </nav>
 
           <button
@@ -584,9 +597,64 @@ export default function Home() {
           </article>
         </div>
       </section>
+      <section id="contact" style={{ ...sectionStyle, paddingTop: "38px" }}>
+        <SectionTitle
+          eyebrow="CONTACT"
+          title="Connect with Vivacapere."
+          text="For product access, partnerships, investment enquiries and general company communication, contact Vivacapere directly."
+        />
+        <div className="contactGrid">
+          <article className="contactCard" style={{ ...panelStyle, borderColor: "rgba(74,168,255,.34)" }}>
+            <h3>Direct contact</h3>
+            <div className="contactRows">
+              <div className="contactRow">
+                <div className="contactLabel">Email</div>
+                <div className="contactValue">
+                  <a className="contactLink" href="mailto:contact@vivacapere.ee">contact@vivacapere.ee</a>
+                </div>
+              </div>
+              <div className="contactRow">
+                <div className="contactLabel">Website</div>
+                <div className="contactValue">
+                  <a className="contactLink" href="https://vivacapere.ee">vivacapere.ee</a>
+                </div>
+              </div>
+              <div className="contactRow">
+                <div className="contactLabel">Response channel</div>
+                <div className="contactValue">English, Estonian or Russian</div>
+              </div>
+            </div>
+          </article>
+          <article className="contactCard" style={panelStyle}>
+            <h3>Company information</h3>
+            <div className="contactRows">
+              <div className="contactRow">
+                <div className="contactLabel">Legal name</div>
+                <div className="contactValue">Vivacapere OÜ</div>
+              </div>
+              <div className="contactRow">
+                <div className="contactLabel">Registry code</div>
+                <div className="contactValue">17588291</div>
+              </div>
+              <div className="contactRow">
+                <div className="contactLabel">Registered address</div>
+                <div className="contactValue">
+                  Mere pst 1-12<br />
+                  40231 Sillamäe linn<br />
+                  Ida-Viru maakond, Estonia
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
       <footer className="footer">
         <div style={{ color: "#a8c6e6", letterSpacing: "2px" }}>VIVACAPERE OÜ</div>
-        <div style={{ marginTop: "10px", fontSize: "13px" }}>Privacy Policy · Terms · Contact</div>
+        <div className="footerLinks">
+          <span className="footerPending">Privacy Policy</span>
+          <span className="footerPending">Terms</span>
+          <a href="#contact">Contact</a>
+        </div>
       </footer>
     </main>
   );
